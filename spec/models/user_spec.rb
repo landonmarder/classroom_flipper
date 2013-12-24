@@ -21,4 +21,14 @@ describe User do
     end
       it { should validate_uniqueness_of :email }
   end
+
+  it 'teachers should have a teacher role' do
+    teacher = FactoryGirl.create(:teacher)
+    expect(teacher.is_teacher?).to be true
+  end
+
+  it 'students should not have a teacher role' do
+    student = FactoryGirl.create(:student)
+    expect(student.is_teacher?).to be false
+  end
 end
