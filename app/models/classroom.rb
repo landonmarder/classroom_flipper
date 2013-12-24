@@ -7,5 +7,10 @@ class Classroom < ActiveRecord::Base
     inverse_of: :classrooms
 
   has_many :enrollments,
-    inverse_of: :classroom
+    inverse_of: :classroom,
+    dependent: :destroy
+
+  has_many :assignments,
+    inverse_of: :classroom,
+    dependent: :destroy
 end
