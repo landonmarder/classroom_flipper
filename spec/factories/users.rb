@@ -1,21 +1,21 @@
-# Read about factories at https://github.com/thoughtbot/factory_girl
+# # Read about factories at https://github.com/thoughtbot/factory_girl
 
 FactoryGirl.define do
-  factory :user do
-    first_name 'Michael'
-    last_name 'Jordan'
-    sequence(:email) { |n| "mj#{n}@example.com" }
+  factory :student, :class => 'User' do
+    first_name 'StudentFirst'
+    last_name 'StudentLast'
+    sequence(:email) { |n| "student#{n}@example.com" }
     password 'Password123'
-  end
-
-  trait :teacher_role do
-    role 'Teacher'
-  end
-
-  trait :student_role do
     role 'Student'
   end
+end
 
-  factory :teacher, traits: [:teacher_role]
-  factory :student, traits: [:student_role]
+FactoryGirl.define do
+  factory :teacher, :class => 'User' do
+    first_name 'TeacherFirst'
+    last_name 'TeacherLast'
+    sequence(:email) { |n| "teacher#{n}@example.com" }
+    password 'Password123'
+    role 'Teacher'
+  end
 end

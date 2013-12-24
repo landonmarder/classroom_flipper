@@ -10,11 +10,15 @@ class User < ActiveRecord::Base
   validates_presence_of :first_name
   validates_uniqueness_of :email
 
-  has_many :enrollments, #if a student
+  has_many :classrooms,
     inverse_of: :user,
     dependent: :destroy
 
-  has_many :classrooms, # if a teacher
+  has_many :enrollments,
     inverse_of: :user,
     dependent: :destroy
+
+  has_many :assignments,
+    through: :classrooms
+
 end
