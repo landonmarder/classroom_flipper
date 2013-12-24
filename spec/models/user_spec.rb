@@ -12,4 +12,12 @@ describe User do
 
   it { should have_valid(:last_name).when('Landon') }
   it { should_not have_valid(:last_name).when(nil, '') }
+
+  describe 'uniqueness validations' do
+    before(:each) do
+      FactoryGirl.create(:user)
+    end
+
+    it { should validate_uniqueness_of :email }
+  end
 end
