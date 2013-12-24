@@ -12,7 +12,8 @@ describe User do
 
   it { should have_many(:enrollments).dependent(:destroy) }
   it { should have_many(:classrooms).dependent(:destroy) }
-  it { should have_many(:assignments).through(:classrooms)}
+  it { should have_many(:assignments).through(:classrooms) }
+  it { should have_many(:submissions).through(:enrollments) }
 
 
   describe 'uniqueness validations' do

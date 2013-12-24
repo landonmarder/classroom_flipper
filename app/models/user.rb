@@ -21,6 +21,9 @@ class User < ActiveRecord::Base
   has_many :assignments,
     through: :classrooms
 
+  has_many :submissions,
+    through: :enrollments
+
   def is_teacher?
     role == 'Teacher'
   end
