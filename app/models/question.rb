@@ -9,7 +9,7 @@ class Question < ActiveRecord::Base
     inverse_of: :question,
     dependent: :destroy
 
-  has_many :submission_answers,
+  has_many :answers,
     inverse_of: :question,
     dependent: :destroy
 end

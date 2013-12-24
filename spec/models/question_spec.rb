@@ -9,5 +9,5 @@ describe Question do
 
   it { should belong_to(:assignment) }
   it { should have_many(:options).dependent(:destroy) }
-  it { should have_many(:submission_answers).dependent(:destroy) }
+  it { should have_many(:answers).dependent(:destroy) }
 end

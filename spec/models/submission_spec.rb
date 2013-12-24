@@ -10,5 +10,5 @@ describe Submission do
   it { should belong_to(:enrollment) }
   it { should belong_to(:assignment) }
 
-  it { should have_many(:submission_answers).dependent(:destroy) }
+  it { should have_many(:answers).dependent(:destroy) }
 end

@@ -8,7 +8,7 @@ class Submission < ActiveRecord::Base
   belongs_to :assignment,
     inverse_of: :submissions
 
-  has_many :submission_answers,
+  has_many :answers,
     inverse_of: :submission,
     dependent: :destroy
 end
