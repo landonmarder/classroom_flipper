@@ -21,4 +21,8 @@ class User < ActiveRecord::Base
   has_many :assignments,
     through: :classrooms
 
+  # def is_teacher? TDD THIS
+  #   role == 'Teacher'
+  # end
+
 end
