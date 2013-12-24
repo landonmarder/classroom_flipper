@@ -11,10 +11,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131224152542) do
+ActiveRecord::Schema.define(version: 20131224160736) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "assignments", force: true do |t|
+    t.integer  "classroom_id",                                                                           null: false
+    t.string   "video_link",                                                                             null: false
+    t.string   "title",                                                                                  null: false
+    t.text     "description",  default: "Answer the questions below based on the video. Try your best!"
+    t.string   "status",       default: "Live",                                                          null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "classrooms", force: true do |t|
     t.string   "name",        null: false
@@ -27,6 +37,13 @@ ActiveRecord::Schema.define(version: 20131224152542) do
   create_table "enrollments", force: true do |t|
     t.integer  "user_id",      null: false
     t.integer  "classroom_id", null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "questions", force: true do |t|
+    t.integer  "assignment_id", null: false
+    t.text     "prompt",        null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
