@@ -1,9 +1,9 @@
 require 'spec_helper'
 
 feature 'user sign up', %Q{
-  As a teacher,
+  As a user,
 I want to create an account
-So that I can create and analyze data from a flipped homework assignment to make class time more purposeful.
+So that class time is more purposeful.
 } do
 # Acceptance Criteria
 # * I must specify an email address, my school, grade/subject, a first name, a last name, a password, and a password confirmation
