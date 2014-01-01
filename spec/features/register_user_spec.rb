@@ -20,9 +20,9 @@ So that class time is more purposeful.
 
     fill_in 'First name', with: 'John'
     fill_in 'Last name', with: 'Smith'
-    select 'Student', from: 'I am a . . .'
+    select 'Student', from: 'I am a ...'
     fill_in 'Email', with: 'user@example.com'
-    fill_in 'user-password', with: 'password345'
+    fill_in 'Password', with: 'password345'
     fill_in 'Password confirmation', with: 'password345'
     click_button 'Sign up'
 
@@ -33,7 +33,7 @@ So that class time is more purposeful.
   scenario 'required information is not supplied' do
     visit root_path
     click_link 'Sign Up'
-    click_button 'Sign Up'
+    click_button 'Sign up'
 
     expect(page).to have_content("can't be blank")
     expect(page).to_not have_content('Sign Out')
@@ -43,9 +43,9 @@ So that class time is more purposeful.
     visit root_path
     click_link 'Sign Up'
 
-    fill_in 'user-password', with: 'password'
-    fill_in 'Password Confirmation', with: 'somethingElse'
-    click_button 'Sign Up'
+    fill_in 'Password', with: 'password'
+    fill_in 'Password confirmation', with: 'somethingElse'
+    click_button 'Sign up'
 
     expect(page).to have_content("doesn't match")
     expect(page).to_not have_content('Sign Out')
