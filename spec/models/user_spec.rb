@@ -43,4 +43,8 @@ describe User do
     expect(user).to_not be_valid
     expect(user.errors[:password_confirmation]).to_not be_blank
   end
+
+  it 'lists all the roles' do
+    expect(User.role_options).to eql(['Student', 'Teacher'])
+  end
 end

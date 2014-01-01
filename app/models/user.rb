@@ -28,4 +28,7 @@ class User < ActiveRecord::Base
     role == 'Teacher'
   end
 
+  def self.role_options
+    ['Student', 'Teacher']
+  end
 end
