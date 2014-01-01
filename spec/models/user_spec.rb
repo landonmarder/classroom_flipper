@@ -4,6 +4,9 @@ describe User do
   it { should have_valid(:role).when('Student', 'Teacher') }
   it { should_not have_valid(:role).when(nil, '', 'boy', 'girl') }
 
+  it { should have_valid(:email).when('user@example.com') }
+  it { should_not have_valid(:email).when(nil, '', 'user', 'user@', 'user.com', '@.com')}
+
   it { should have_valid(:first_name).when('Landon') }
   it { should_not have_valid(:first_name).when(nil, '') }
 
