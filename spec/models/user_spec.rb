@@ -35,4 +35,12 @@ describe User do
     student = FactoryGirl.create(:student)
     expect(student.is_teacher?).to be false
   end
+
+  it 'has a matching passwor confirmation for the password' do
+    user = User.new
+    user.password = 'password'
+    user.password_confirmation = 'anotherpassword'
+    expect(user).to_not be_valid
+    expect(user.errors[:password_confirmation]).to_not be_blank
+  end
 end
