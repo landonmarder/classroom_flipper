@@ -1,0 +1,158 @@
+/*
+ ie8hack-foundation4.css
+ This is hack for ie8 Grid support in foundation four
+
+ Created by amey raut on 2013-08-01.
+ Copyright 2013 amey raut. All rights reserved. 
+ https://github.com/ameyraut/IE8-Grid-hack-foundation-4
+ */
+
+/*  For IE 8 */
+.lt-ie9 .row .row{margin:0;}
+.lt-ie9 .row .column:first-child,.lt-ie9 .row .columns:first-child{margin-left:0!important;}
+.lt-ie9 .row .column:last-child,.lt-ie9 .row .columns:last-child{margin-right:0!important;}
+.lt-ie9 .column,.lt-ie9 .columns{position:relative;padding-left:0;padding-right:0;float:left;margin-left:.9375%;margin-right:.9375%;min-height:1px;}
+.lt-ie9 .small-1{width:6.45833%;}
+.lt-ie9 .small-2{width:14.79167%;}
+.lt-ie9 .small-3{width:23.125%;}
+.lt-ie9 .small-4{width:31.45833%;}
+.lt-ie9 .small-5{width:39.79167%;}
+.lt-ie9 .small-6{width:48.125%;}
+.lt-ie9 .small-7{width:56.45833%;}
+.lt-ie9 .small-8{width:64.79167%;}
+.lt-ie9 .small-9{width:73.125%;}
+.lt-ie9 .small-10{width:81.4583%;}
+.lt-ie9 .small-11{width:89.79167%;}
+.lt-ie9 .small-12{width:100%;}
+.lt-ie9 .small-offset-0,.lt-ie9 .large-offset-0{width:100%;}
+.lt-ie9 .small-offset-1,.lt-ie9 .large-offset-1{margin-left:8.33333%;}
+.lt-ie9 .small-offset-2,.lt-ie9 .large-offset-2{margin-left:16.66667%;}
+.lt-ie9 .small-offset-3,.lt-ie9 .large-offset-3{margin-left:25%;}
+.lt-ie9 .small-offset-4,.lt-ie9 .large-offset-4{margin-left:33.33333%;}
+.lt-ie9 .small-offset-5,.lt-ie9 .large-offset-5{margin-left:41.66667%;}
+.lt-ie9 .small-offset-6,.lt-ie9 .large-offset-6{margin-left:50%;}
+.lt-ie9 .small-offset-7,.lt-ie9 .large-offset-7{margin-left:58.33333%;}
+.lt-ie9 .small-offset-8,.lt-ie9 .large-offset-8{margin-left:66.66667%;}
+.lt-ie9 .small-offset-9,.lt-ie9 .large-offset-9{margin-left:75%;}
+.lt-ie9 .small-offset-10,.lt-ie9 .large-offset-10{margin-left:83.3333%;}
+.lt-ie9 .large-offset-11{margin-left:91.66667%;}
+.lt-ie9 [class*=column] + [class*=column]:last-child{float:right;}
+.lt-ie9 [class*=column] + [class*=column].end{float:left;}
+.lt-ie9 .column.small-centered,.lt-ie9 .columns.small-centered{position:relative;margin-left:auto;margin-right:auto;float:none!important;}
+.lt-ie9 .row .column.small-centered:first-child,.lt-ie9 .row .columns.small-centered:first-child{margin-left:auto !important;}
+ 
+.lt-ie9 .large-1{width:6.45833%;}
+.lt-ie9 .large-2{width:14.79167%;}
+.lt-ie9 .large-3{width:23.125%;}
+.lt-ie9 .large-4{width:31.45833%;}
+.lt-ie9 .large-5{width:39.79167%;}
+.lt-ie9 .large-6{width:48.125%;}
+.lt-ie9 .large-7{width:56.45833%;}
+.lt-ie9 .large-8{width:64.79167%;}
+.lt-ie9 .large-9{width:73.125%;}
+.lt-ie9 .large-10{width:81.4583%;}
+.lt-ie9 .large-11{width:89.79167%;}
+.lt-ie9 .large-12{width:100%;}
+.lt-ie9 .push-1{position:relative;left:8.33333%;right:auto;}
+.lt-ie9 .pull-1{position:relative;right:8.33333%;left:auto;}
+.lt-ie9 .push-2{position:relative;left:16.66667%;right:auto;}
+.lt-ie9 .pull-2{position:relative;right:16.66667%;left:auto;}
+.lt-ie9 .push-3{position:relative;left:25%;right:auto;}
+.lt-ie9 .pull-3{position:relative;right:25%;left:auto;}
+.lt-ie9 .push-4{position:relative;left:33.33333%;right:auto;}
+.lt-ie9 .pull-4{position:relative;right:33.33333%;left:auto;}
+.lt-ie9 .push-5{position:relative;left:41.66667%;right:auto;}
+.lt-ie9 .pull-5{position:relative;right:41.66667%;left:auto;}
+.lt-ie9 .push-6{position:relative;left:50%;right:auto;}
+.lt-ie9 .pull-6{position:relative;right:50%;left:auto;}
+.lt-ie9 .push-7{position:relative;left:58.33333%;right:auto;}
+.lt-ie9 .pull-7{position:relative;right:58.33333%;left:auto;}
+.lt-ie9 .push-8{position:relative;left:66.66667%;right:auto;}
+.lt-ie9 .pull-8{position:relative;right:66.66667%;left:auto;}
+.lt-ie9 .push-9{position:relative;left:75%;right:auto;}
+.lt-ie9 .pull-9{position:relative;right:75%;left:auto;}
+.lt-ie9 .push-10{position:relative;left:83.33333%;right:auto;}
+.lt-ie9 .pull-10{position:relative;right:83.33333%;left:auto;}
+.lt-ie9 .push-11{position:relative;left:91.66667%;right:auto;}
+.lt-ie9 .pull-11{position:relative;right:91.66667%;left:auto;}
+.lt-ie9 .column.large-centered,.lt-ie9 .columns.large-centered{position:relative;margin-left:auto ;margin-right:auto;float:none !important;}
+.lt-ie9 .column.large-uncentered,.lt-ie9 .columns.large-uncentered{margin-left:0;margin-right:0;float:left!important;}
+.lt-ie9 .column.large-uncentered.opposite,.lt-ie9 .columns.large-uncentered.opposite{float:right!important;} 
+.lt-ie9 .row .column.large-centered:first-child,.lt-ie9 .row .columns.large-centered:first-child{margin-left:auto !important;}
+ 
+/* Nicolas Gallagher's micro clearfix */
+.lt-ie9 .row { *zoom: 1; }
+.lt-ie9 .row:before, .row:after { content: " "; display: table; }
+.lt-ie9 .row:after { clear: both; }
+
+/* For top Horizantal menu */
+.lt-ie9 .top-bar{background:#111111;zoom:1;overflow:visible;}
+.lt-ie9 .top-bar:before,.top-bar:after{content:" ";display:table;}
+.lt-ie9 .top-bar:after{clear:both;}
+.lt-ie9 .top-bar .toggle-topbar{display:none;}
+.lt-ie9 .top-bar .title-area{float:left;}
+.lt-ie9 .top-bar .name h1 a{width:auto;}
+.lt-ie9 .top-bar input,.lt-ie9 .top-bar .button{line-height:2em;font-size:.875em;height:2em;padding:0 10px;position:relative;top:8px;}
+.lt-ie9 .top-bar.expanded{background:#111111;}
+.lt-ie9 .contain-to-grid .top-bar{max-width:70em;margin:0 auto;}
+.lt-ie9 .top-bar-section{-webkit-transition:none 0 0;-moz-transition:none 0 0;transition:none 0 0;left:0!important;}
+.lt-ie9 .top-bar-section ul{width:auto;height:auto!important;display:inline;}
+.lt-ie9 .top-bar-section ul li{float:left;}
+.lt-ie9 .top-bar-section ul li .js-generated{display:none;}
+.lt-ie9 .top-bar-section li a:not(.button){padding:0 15px;line-height:45px;background:#111111;}
+.lt-ie9 .top-bar-section li a:not(.button).hover{background:black;}
+.lt-ie9 .top-bar-section .has-dropdown > a{padding-right:35px!important;}
+.lt-ie9 .top-bar-section .has-dropdown > a:after{content:"";display:block;width:0;height:0;border:inset 5px;border-color:rgba(255,255,255,0.5) transparent transparent;border-top-style:solid;margin-top:-2.5px;top:22.5px;}
+.lt-ie9 .top-bar-section .has-dropdown.moved{position:relative;}
+.lt-ie9 .top-bar-section .has-dropdown.moved > .dropdown{visibility:hidden;}
+.lt-ie9 .top-bar-section .has-dropdown.hover > .dropdown{visibility:visible;}
+.lt-ie9 .top-bar-section .has-dropdown .dropdown li.has-dropdown > a:after{border:none;content:"\00bb";margin-top:-16px;right:5px;}
+.lt-ie9 .top-bar-section .dropdown{left:0;top:auto;background:transparent;min-width:100%;}
+.lt-ie9 .top-bar-section .dropdown li a{color:white;line-height:1;white-space:nowrap;padding:7px 15px;background:#1e1e1e;}
+.lt-ie9 .top-bar-section .dropdown li label{white-space:nowrap;background:#1e1e1e;}
+.lt-ie9 .top-bar-section .dropdown li .dropdown{left:100%;top:0;}
+.lt-ie9 .top-bar-section > ul > .divider,.top-bar-section > ul > [role=separator]{border-bottom:none;border-top:none;border-right:solid 1px #2b2b2b;border-left:solid 1px black;clear:none;height:45px;width:0;}
+.lt-ie9 .top-bar-section .has-form{background:#111111;padding:0 15px;height:45px;}
+.lt-ie9 .top-bar-section ul.right li .dropdown{left:auto;right:0;}
+.lt-ie9 .top-bar-section ul.right li .dropdown li .dropdown{right:100%;}
+.lt-ie9 .no-js .top-bar-section ul li:hover > a{background:#090909;color:white;}
+.lt-ie9 .no-js .top-bar-section ul li:active > a{background:#090909;color:white;}
+.lt-ie9 .no-js .top-bar-section .has-dropdown:hover > .dropdown{visibility:visible;}
+
+/* Theme custom Classes for ie8*/
+.lt-ie9 .hover-style .caption {
+	height: 0% !important;
+}
+
+.lt-ie9 .hover-style:hover .caption {
+	height: 100% !important;
+}
+
+.lt-ie9  .top-bar-section li a.button {
+	padding: auto;
+}
+.lt-ie9  .top-bar-section li a {
+	padding: 0 15px;
+	line-height: 45px;
+	background: #111;
+}
+.lt-ie9 .top-bar-section .has-dropdown > a {
+	padding-right: 35px !important;
+}
+
+.lt-ie9 .top-bar-section .has-dropdown > a:after {
+	content: "";
+	display: block;
+	vertical-align: top;
+	border-top: 4px solid #FFF;
+	border-right: 4px solid transparent;
+	border-left: 4px solid transparent;
+	border-bottom: 4px solid #222;
+	position: absolute;
+	top: 50%;
+	right: 0;
+}
+.lt-ie9 .top-bar-section .has-dropdown > a:hover:after {
+	border-bottom: 4px solid #E91B23;
+}
+
