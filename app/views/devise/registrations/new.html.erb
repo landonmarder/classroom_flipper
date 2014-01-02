@@ -1,27 +1,77 @@
-<h2>Sign up</h2>
+<section class="row"  id="signup">
+  <div class="small-12 large-4 large-offset-2 column">
+    <h3 class="aligncenter title">Sign Up</h3>
+      <fieldset>
+      <form action="/signin" method="post" class="form-stacked">
+        <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
+          <%= devise_error_messages! %>
 
-<%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
-  <%= devise_error_messages! %>
+          <div class="clearfix">
+          <div class="input">
+            <%= f.label :first_name %><br />
+            <%= f.text_field :first_name %>
+            </div>
+            </div>
 
-  <div><%= f.label :first_name %><br />
-  <%= f.text_field :first_name %></div>
+          <div class="clearfix">
+          <div class="input">
+            <%= f.label :last_name %><br />
+            <%= f.text_field :last_name %>
+          </div>
+          </div>
 
-  <div><%= f.label :last_name %><br />
-  <%= f.text_field :last_name %></div>
+          <div class="clearfix">
+          <div class="input">
+            <%= f.label :role, 'I am a ...' %><br />
+            <%= f.select :role, User.role_options %>
+          </div>
+          </div>
+          <br>
+          <div class="clearfix">
+          <div class="input">
+            <%= f.label :email %><br />
+            <%= f.email_field :email, autofocus: true %>
+          </div>
+          </div>
+          <div class="clearfix">
+          <div class="input">
+            <%= f.label :password %><br />
+            <%= f.password_field :password %>
+          </div>
+          </div>
 
-  <div><%= f.label :role, 'I am a ...' %><br />
-  <%= f.select :role, User.role_options %></div>
+          <div class="clearfix">
+          <div class="input">
+            <%= f.label :password_confirmation %><br />
+            <%= f.password_field :password_confirmation %>
+          </div>
+          </div>
 
-  <div><%= f.label :email %><br />
-  <%= f.email_field :email, autofocus: true %></div>
-
-  <div><%= f.label :password %><br />
-  <%= f.password_field :password %></div>
-
-  <div><%= f.label :password_confirmation %><br />
-  <%= f.password_field :password_confirmation %></div>
-
-  <div><%= f.submit "Sign Up" %></div>
-<% end %>
-
+          <div class="clearfix">
+          <div class="input">
+            <%= f.submit "Sign Up" %>
+          </div>
+          </div>
+        <% end %>
+        <fieldset>
+      </form>
+    </div>
+    <div class="small-12 large-4 column left">
+      <h2>Why schools love it ...</h2><br>
+      <h4>Teachers:</h4>
+      <ul class="list-unstyled link-list">
+      <li><i class="icon-ok icon-blue icon-2x"></i> Curate video lessons from Youtube or Vimeo</li>
+      <li><i class="icon-ok icon-blue icon-2x"></i> Assign students video lessons for homework</li>
+      <li><i class="icon-ok icon-blue icon-2x"></i> Get student data for your lesson before entering the classroom</li>
+      </ul><br><br>
+      <h4>Students:</h4>
+      <ul class="list-unstyled link-list">
+      <li><i class="icon-ok icon-blue icon-2x"></i> Organized list of assignments</li>
+      <li><i class="icon-ok icon-blue icon-2x"></i> Learn new material at your own pace</li>
+      <li><i class="icon-ok icon-blue icon-2x"></i> Have teachers adjust their lessons for you</li>
+      </ul>
+      <br />
+    </div>
+</section>
 <%= render "devise/shared/links" %>
+
