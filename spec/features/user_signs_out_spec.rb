@@ -23,6 +23,7 @@ feature 'user signs out' do
 
     expect(page).to_not have_content("Sign Out")
     expect(page).to have_content("Sign In")
+    expect(page).to have_content('Signed out successfully.')
   end
 
   scenario 'a user that is not authenticated cannot sign out' do

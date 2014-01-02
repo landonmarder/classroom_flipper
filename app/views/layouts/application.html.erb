@@ -10,10 +10,11 @@
     <%= javascript_include_tag "vendor/modernizr" %>
     <%= csrf_meta_tags %>
   </head>
-  <% flash.each do |name, msg| -%>
+  <body>
+    <%= render 'layouts/header' %>
+    <% flash.each do |name, msg| -%>
       <%= content_tag :div, msg, class: name %>
     <% end -%>
-      <%= render 'layouts/header' %>
     <%= yield %>
     <%= javascript_include_tag "application" %>
   </body>
