@@ -20,7 +20,19 @@ feature 'user signs in' do
     expect(page).to have_content("Sign Out")
   end
 
-  scenario 'a nonexistent email and password is supplied'
+  scenario 'a nonexistent email and password is supplied' do
+    visit root_path
+    click_link 'Sign In'
+
+    click_button 'Sign In'
+    fill_in 'Email', with: 'nobody@example.com'
+    fill_in 'Password', with: 'password'
+
+    click_button 'Sign In'
+    expect(page).to_not have_content("Welcome Back!")
+    expect(page).to_not have_content("Sign Out")
+    expect(page).to have_content('Invalid email or password.')
+  end
 
   scenario 'a existing email with the wrong password is denied access'
 
