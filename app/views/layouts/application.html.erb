@@ -10,9 +10,13 @@
     <%= javascript_include_tag "vendor/modernizr" %>
     <%= csrf_meta_tags %>
   </head>
-<%= render 'header' %>
+      <%= render 'layouts/header' %>
     <%= yield %>
     <%= javascript_include_tag "application" %>
   </body>
+
+  <footer>
+  <%= render 'layouts/footer' %>
+  </footer>
 
 </html>
