@@ -34,7 +34,19 @@ feature 'user signs in' do
     expect(page).to have_content('Invalid email or password.')
   end
 
-  scenario 'a existing email with the wrong password is denied access'
+  scenario 'a existing email with the wrong password is denied access' do
+    user = FactoryGirl.create(:teacher)
+    visit root_path
+    click_link 'Sign In'
+
+    fill_in 'Email', with: user.email
+    fill_in 'Password', with: "#{user.password}NOT"
+
+    click_button 'Sign In'
+    expect(page).to_not have_content("Welcome Back!")
+    expect(page).to_not have_content("Sign Out")
+    expect(page).to have_content('Invalid email or password.')
+  end
 
   scenario 'an already authenticated user cannot re-sign in'
 end
