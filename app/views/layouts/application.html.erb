@@ -4,27 +4,15 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <title><%= content_for?(:title) ? yield(:title) : "foundation-rails" %></title>
+    <title><%= content_for?(:title) ? yield(:title) : "Classroom Flipper" %></title>
 
     <%= stylesheet_link_tag    "application" %>
     <%= javascript_include_tag "vendor/modernizr" %>
     <%= csrf_meta_tags %>
   </head>
-    <nav>
-    <% if user_signed_in? %>
-      <li><%= link_to 'Sign Out', '#' %></li>
-    <% else %>
-      <li><%= link_to 'Sign In', new_user_session_path %></li>
-      <li><%= link_to 'Sign Up', new_user_registration_path %></li>
-    <% end %>
-    </nav>
-    <% flash.each do |name, msg| -%>
-        <%= content_tag :div, msg, class: name %>
-    <% end -%>
-
-  <body>
-
+<%= render 'header' %>
     <%= yield %>
     <%= javascript_include_tag "application" %>
   </body>
+
 </html>

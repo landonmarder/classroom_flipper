@@ -1,0 +1,21 @@
+<header id="header">
+  <div class="row">
+    <nav class="top-bar">
+      <ul class="title-area">
+        <li class="name">
+        <h1><a href="/" class="logo">Classroom Flipper</h1>
+        </li>
+        <li class="toggle-topbar"><a href="#"><i class="icon-reorder"></i></a></li>
+      </ul>
+      <section class="top-bar-section">
+      <ul class="right">
+        <% if user_signed_in? %>
+          <li class="active"><%= link_to 'Sign Out', '#' %></li>
+        <% else %>
+          <li class="active"><%= link_to 'Sign In', new_user_session_path %></li>
+          <li class="active"><%= link_to 'Sign Up', new_user_registration_path %></li>
+        <% end %>
+      </section>
+    </nav>
+  </div>
+</header>
