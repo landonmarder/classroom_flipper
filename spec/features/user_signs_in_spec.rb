@@ -7,17 +7,10 @@ feature 'user signs in' do
   # * Successful sign in goes to appropriate page (assignment list for teacher or classroom feed for students)
   # * Unsuccessful sign in asks user to sign in again
 
+  let(:teacher) { FactoryGirl.create(:teacher) }
+
   scenario 'an existing user specifies a valid email and password' do
-    user = FactoryGirl.create(:teacher)
-    visit root_path
-    click_link 'Sign In'
-
-    fill_in 'Email', with: user.email
-    fill_in 'Password', with: user.password
-
-    click_button 'Sign In'
-    expect(page).to have_content("Welcome Back!")
-    expect(page).to have_content("Sign Out")
+    sign_in_as(teacher)
   end
 
   scenario 'a nonexistent email and password is supplied' do
@@ -49,12 +42,7 @@ feature 'user signs in' do
   end
 
   scenario 'an already authenticated user cannot re-sign in' do
-    user = FactoryGirl.create(:teacher)
-    visit new_user_session_path
-    fill_in 'Email', with: user.email
-    fill_in 'Password', with: user.password
-
-    click_button 'Sign In'
+    sign_in_as(teacher)
     expect(page).to have_content("Welcome Back!")
     expect(page).to have_content("Sign Out")
     expect(page).to_not have_content("Sign In")
