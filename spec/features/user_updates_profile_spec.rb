@@ -52,9 +52,10 @@ feature 'user updates profile' do
     expect(page).to have_content('Current password is invalid')
   end
 
-  scenario 'an existing user cannot edit another profile' do
-  end
-
   scenario 'a non signed in user cannot edit a profile' do
+    user = FactoryGirl.create(:teacher)
+    visit new_user_session_path
+
+    expect(page).to have_content('Sign In')
   end
 end
