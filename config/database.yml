@@ -51,10 +51,18 @@ test:
   username:
   password:
 
-production:
+staging:
   adapter: postgresql
   encoding: unicode
   database: classroom_flipper_production
+  pool: 5
+  username:
+  password:
+
+production:
+  adapter: postgresql
+  encoding: unicode
+  database: classroom_flipper_staging
   pool: 5
   username:
   password:
