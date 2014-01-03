@@ -7,13 +7,10 @@ feature 'user signs out' do
   # * I must click sign out
   # * I must be returned to the home page
 
-  scenario 'an existing user signs out' do
-    user = FactoryGirl.create(:teacher)
-    visit new_user_session_path
-    fill_in 'Email', with: user.email
-    fill_in 'Password', with: user.password
+  let(:teacher) { FactoryGirl.create(:teacher) }
 
-    click_button 'Sign In'
+  scenario 'an existing user signs out' do
+    sign_in_as(teacher)
 
     expect(page).to have_content("Welcome Back!")
     expect(page).to have_content("Sign Out")
