@@ -54,6 +54,10 @@ group :development do
   gem 'binding_of_caller'
 end
 
+group :staging, :production do
+  gem 'rails_12factor'
+end
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.1.2'
 
