@@ -19,7 +19,6 @@ feature 'user updates profile' do
     expect(page).to have_content('Edit Profile')
 
     click_link 'Edit Profile'
-    # save_and_open_page
     fill_in 'First name', with: 'New First'
     fill_in 'Last name', with: 'New Last'
     fill_in 'Email', with: "new-#{user.email}"
@@ -31,6 +30,26 @@ feature 'user updates profile' do
   end
 
   scenario 'an existing user changes information, but does not supply correct password' do
+    user = FactoryGirl.create(:teacher)
+    visit new_user_session_path
+    fill_in 'Email', with: user.email
+    fill_in 'Password', with: user.password
+
+    click_button 'Sign In'
+    expect(page).to have_content("Welcome Back!")
+    expect(page).to have_content("Sign Out")
+    expect(page).to_not have_content("Sign In")
+    expect(page).to have_content('Edit Profile')
+
+    click_link 'Edit Profile'
+    fill_in 'First name', with: 'New First'
+    fill_in 'Last name', with: 'New Last'
+    fill_in 'Email', with: "new-#{user.email}"
+    fill_in 'Password', with: 'password34567'
+    fill_in 'Password confirmation', with: 'password34567'
+    fill_in 'Current password', with: "#{user.password}NOT"
+    click_button 'Update'
+    expect(page).to have_content('Current password is invalid')
   end
 
   scenario 'an existing user cannot edit another profile' do
