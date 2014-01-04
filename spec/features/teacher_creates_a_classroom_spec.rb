@@ -15,9 +15,8 @@ feature 'teacher creates a classroom' do
     click_link 'Create Classroom'
     fill_in 'Name', with: '6th Math Problem Solving'
     fill_in 'Description', with: "Ms.TeacherLast's Classroom at Birth Elementary School"
-    # I want to get the user id from the user already signed in, but not via the form
     click_button 'Create Classroom'
-    save_and_open_page
+
     expect(page).to have_content("Name: 6th Math Problem Solving")
     expect(page).to have_content('Your classroom is successfully created!')
   end
