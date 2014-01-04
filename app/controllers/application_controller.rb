@@ -10,5 +10,11 @@ class ApplicationController < ActionController::Base
   def configure_permitted_parameters
     devise_parameter_sanitizer.for(:sign_up) << [:first_name, :last_name, :role]
   end
+
+  def access_denied(message = nil)
+    flash[:notice] = message || "Access Denied"
+    redirect_to root_path
+    return false
+  end
 end
 

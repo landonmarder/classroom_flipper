@@ -29,9 +29,7 @@ class ClassroomsController < ApplicationController
 
   def authorize_teacher
     unless user_signed_in? and current_user.is_teacher?
-      redirect_to root_path,
-        notice: "Sorry, only registered teachers can create a classroom."
-      # raise ActionController::RoutingError.new('Sorry, only teachers can create a classroom!')
+      access_denied("Sorry, only registered teachers can create a classroom.")
     end
   end
 end
