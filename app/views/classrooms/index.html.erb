@@ -1,0 +1,6 @@
+<h1><%= @user.first_name%> <%= @user.last_name%>'s Classrooms</h1>
+
+<% @classrooms.each do |classroom| %>
+  <h3>Name: <%=classroom.name%></h3>
+  <p>Description: <%=classroom.description%></p>
+<% end %>
