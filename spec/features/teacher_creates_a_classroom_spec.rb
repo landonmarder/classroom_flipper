@@ -9,6 +9,7 @@ feature 'teacher creates a classroom' do
 # * I must click on create classroom button
 # * Student cannot create a classroom
   let(:teacher) { FactoryGirl.create(:teacher) }
+  let(:student) { FactoryGirl.create(:student) }
 
   scenario 'teacher fills out creating the classroom form properly' do
     sign_in_as(teacher)
@@ -26,15 +27,27 @@ feature 'teacher creates a classroom' do
     click_link 'Create Classroom'
     fill_in 'Name', with: ''
     click_button 'Create Classroom'
-        save_and_open_page
 
     expect(page).to have_content("Name can't be blank")
     expect(page).to have_content("Description can't be blank")
   end
 
-  scenario 'a student tries to create a classroom'
+  scenario 'a student does not see option to create a classroom' do
+    sign_in_as(student)
+    expect(page).to_not have_content('Create Classroom')
+  end
 
-  scenario 'a non-authenticated user tries to create a classroom'
+  scenario 'a student cannot get to the page to create a classroom' do
+    sign_in_as(student)
+    visit new_classroom_path
+    expect(page).to have_content('Welcome')
+    expect(page).to have_content('Sorry, only registered teachers can create a classroom.')
+  end
 
-  scenario 'a teacher cannot create a classroom for another teacher'
+  scenario 'a non-authenticated user tries to create a classroom' do
+    visit new_classroom_path
+    expect(page).to have_content('Welcome')
+    expect(page).to have_content('Sorry, only registered teachers can create a classroom.')
+  end
+  # scenario 'a teacher cannot create a classroom for another teacher' # Do I need this?
 end

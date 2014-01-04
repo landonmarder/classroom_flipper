@@ -1,4 +1,6 @@
 class ClassroomsController < ApplicationController
+  before_action :authorize_teacher
+
   def new
     @classroom = Classroom.new
   end
@@ -23,5 +25,13 @@ class ClassroomsController < ApplicationController
   private
   def classroom_params
     params.require(:classroom).permit(:name, :description)
+  end
+
+  def authorize_teacher
+    unless user_signed_in? and current_user.is_teacher?
+      redirect_to root_path,
+        notice: "Sorry, only registered teachers can create a classroom."
+      # raise ActionController::RoutingError.new('Sorry, only teachers can create a classroom!')
+    end
   end
 end
