@@ -21,11 +21,20 @@ feature 'teacher creates a classroom' do
     expect(page).to have_content('Your classroom is successfully created!')
   end
 
-  scenario 'a teacher cannot create a classroom for another teacher'
+  scenario 'teacher does not fill out creating the classroom for properly' do
+    sign_in_as(teacher)
+    click_link 'Create Classroom'
+    fill_in 'Name', with: ''
+    click_button 'Create Classroom'
+        save_and_open_page
 
-  scenario 'teacher does not fill out creating the classroom for properly'
+    expect(page).to have_content("Name can't be blank")
+    expect(page).to have_content("Description can't be blank")
+  end
+
+  scenario 'a student tries to create a classroom'
 
   scenario 'a non-authenticated user tries to create a classroom'
 
-  scenario 'a student tries to create a classroom'
+  scenario 'a teacher cannot create a classroom for another teacher'
 end

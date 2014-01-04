@@ -24,5 +24,4 @@ class ClassroomsController < ApplicationController
   def classroom_params
     params.require(:classroom).permit(:name, :description)
   end
-
 end
