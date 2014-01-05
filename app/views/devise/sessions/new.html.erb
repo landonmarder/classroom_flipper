@@ -3,22 +3,19 @@
     <h3 class="aligncenter title">Sign In</h3>
       <fieldset>
         <%= simple_form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
-          <div class="clearfix">
-          <div class="input">
+
+          <div class="clearfix input">
             <%= f.input :email %>
           </div>
-          </div>
 
-          <div class="clearfix">
-          <div class="input">
+          <div class="clearfix input">
             <%= f.input :password %>
           </div>
+
+          <div class="clearfix input aligncenter">
+            <%= f.button :submit, "Sign In" %>
           </div>
-          <div class="clearfix">
-          <div class="input">
-            <%= f.submit "Sign In" %>
-          </div>
-          </div>
+
         <% end %>
       </fieldset>
   </div>
