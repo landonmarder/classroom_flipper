@@ -2,53 +2,47 @@
   <div class="small-12 large-4 large-offset-2 column">
     <h3 class="aligncenter title">Sign Up</h3>
       <fieldset>
-        <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
+        <%= simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
           <%= devise_error_messages! %>
 
           <div class="clearfix">
           <div class="input">
-            <%= f.label :first_name %><br />
-            <%= f.text_field :first_name %>
+            <%= f.input :first_name %>
             </div>
             </div>
 
           <div class="clearfix">
           <div class="input">
-            <%= f.label :last_name %><br />
-            <%= f.text_field :last_name %>
+            <%= f.input :last_name %>
           </div>
           </div>
 
           <div class="clearfix">
           <div class="input">
-            <%= f.label :role, 'I am a ...' %><br />
-            <%= f.select :role, User.role_options %>
+            <%= f.input :role, label: 'I am a ...', collection: User.role_options, include_blank: false %>
           </div>
           </div>
           <br>
           <div class="clearfix">
           <div class="input">
-            <%= f.label :email %><br />
-            <%= f.email_field :email, autofocus: true %>
+            <%= f.input :email %>
           </div>
           </div>
           <div class="clearfix">
           <div class="input">
-            <%= f.label :password %><br />
-            <%= f.password_field :password %>
+            <%= f.input :password %>
           </div>
           </div>
 
           <div class="clearfix">
           <div class="input">
-            <%= f.label :password_confirmation %><br />
-            <%= f.password_field :password_confirmation %>
+            <%= f.input :password_confirmation %>
           </div>
           </div>
 
           <div class="clearfix">
           <div class="input">
-            <%= f.submit "Sign Up" %>
+            <%= f.submit 'Sign Up' %>
           </div>
           </div>
         <% end %>
