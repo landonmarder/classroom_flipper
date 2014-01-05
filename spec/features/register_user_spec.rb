@@ -24,7 +24,6 @@ So that class time is more purposeful.
     fill_in 'Email', with: 'user@example.com'
     fill_in 'Password', with: 'password345'
     fill_in 'Password confirmation', with: 'password345'
-    save_and_open_page
     click_button 'Sign Up'
 
     expect(page).to have_content('You have successfully signed up!')
