@@ -28,8 +28,8 @@ feature 'teacher creates a classroom' do
     fill_in 'Name', with: ''
     click_button 'Create Classroom'
 
-    expect(page).to have_content("Name can't be blank")
-    expect(page).to have_content("Description can't be blank")
+    expect(page).to have_content("Namecan't be blank")
+    expect(page).to have_content("Descriptioncan't be blank")
   end
 
   scenario 'a student does not see option to create a classroom' do
