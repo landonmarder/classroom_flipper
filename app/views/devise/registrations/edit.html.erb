@@ -2,27 +2,24 @@
   <div class="small-12 large-4 small-centered large-centered column">
     <h3 class="aligncenter title">Edit</h3>
       <fieldset>
-        <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f| %>
+        <%= simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f| %>
           <%= devise_error_messages! %>
 
           <div class="clearfix">
           <div class="input">
-            <%= f.label :first_name %><br />
-            <%= f.text_field :first_name %>
+            <%= f.input :first_name %>
           </div>
           </div>
 
           <div class="clearfix">
           <div class="input">
-            <%= f.label :last_name %><br />
-            <%= f.text_field :last_name %>
+            <%= f.input :last_name %>
           </div>
           </div>
 
           <div class="clearfix">
           <div class="input">
-            <%= f.label :email %><br />
-            <%= f.email_field :email, autofocus: true %>
+            <%= f.input :email %>
           </div>
           </div>
           <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
@@ -31,22 +28,19 @@
 
           <div class="clearfix">
           <div class="input">
-            <%= f.label :password %><i>(leave blank if you don't want to change it)</i><br />
-            <%= f.password_field :password %>
+            <%= f.input :password %><i>(leave blank if you don't want to change it)</i><br />
           </div>
           </div>
 
           <div class="clearfix">
           <div class="input">
-            <%= f.label :password_confirmation %><br />
-            <%= f.password_field :password_confirmation %>
+            <%= f.input :password_confirmation %>
           </div>
           </div>
 
           <div class="clearfix">
           <div class="input">
-          <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
-          <%= f.password_field :current_password %>
+          <%= f.input :current_password %> <i>(we need your current password to confirm your changes)
           </div>
           </div>
 
