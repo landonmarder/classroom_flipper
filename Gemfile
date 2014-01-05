@@ -13,6 +13,8 @@ gem 'launchy'
 
 gem 'foundation-rails'
 
+gem 'simple_form'
+
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'
 
