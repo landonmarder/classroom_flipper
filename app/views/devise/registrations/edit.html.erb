@@ -2,7 +2,7 @@
   <div class="small-12 large-4 small-centered large-centered column">
     <h3 class="aligncenter title">Edit</h3>
       <fieldset>
-        <%= simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f| %>
+        <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
           <%= devise_error_messages! %>
 
           <div class="clearfix input">
