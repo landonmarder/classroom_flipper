@@ -50,4 +50,8 @@ describe User do
   it 'lists all the roles' do
     expect(User.role_options).to eql(['Student', 'Teacher'])
   end
+
+  it 'lists all the salutations' do
+    expect(User.salutations).to eql(['Mr.', 'Mrs.', 'Ms.', 'Dr.'])
+  end
 end
