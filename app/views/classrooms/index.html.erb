@@ -30,7 +30,6 @@
   <% end %>
 
   <table class="aligncenter">
-  binding.pry
     <thead>
       <th>Class Name</th>
       <th>Description</th>
@@ -43,7 +42,7 @@
           <td><%=classroom.name%></td>
           <td><%=classroom.description%></td>
           <td><%=classroom.user.professional_name %></td>
-          <td>+</td>
+          <td><%= link_to '+', '#'%></td>
       </tr>
         <% end %>
     </tbody>

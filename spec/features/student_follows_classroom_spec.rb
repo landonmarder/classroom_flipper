@@ -28,7 +28,7 @@ feature 'student follows a classroom' do
     expect(page).to have_content('Biology')
     expect(page).to_not have_content('Math')
 
-    click_button 'Enroll'
+    click_link '+'
     expect(page).to have_content('Thank you for enrolling!')
     expect(page).to have_content('Manage Classrooms')
   end
