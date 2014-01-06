@@ -22,7 +22,8 @@ class ClassroomsController < ApplicationController
     if current_user.is_teacher?
       @classrooms = Classroom.where(user: current_user)
     else
-      @classrooms = Classroom.all
+      @search = Classroom.search(params[:q])
+      @classrooms = @search.result
     end
 
   end

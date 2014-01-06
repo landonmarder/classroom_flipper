@@ -1,4 +1,5 @@
 <h1 class="aligncenter">Manage Your Classrooms</h1>
+
 <% if current_user.is_teacher? %>
   <h4><%= link_to 'Create Classroom', new_classroom_path%></h4>
   <table class="aligncenter">
@@ -17,15 +18,26 @@
       <% end %>
     </tbody>
   </table>
+
 <% else %>
+
+  <%= search_form_for @search do |f| %>
+    <div class="field">
+      <%= f.label :name_cont, "Classroom Name" %>
+      <%= f.text_field :name_cont %>
+    </div>
+    <div class="actions"><%= f.submit "Search"%></div>
+  <% end %>
+
   <table class="aligncenter">
+  binding.pry
     <thead>
       <th>Class Name</th>
+      <!-- <th>Teacher</th> -->
       <th>Description</th>
       <th>Enroll</th>
     </thead>
     <tbody>
-
         <% @classrooms.each do |classroom| %>
         <tr>
           <td><%=classroom.name%></td>

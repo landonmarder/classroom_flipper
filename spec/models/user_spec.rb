@@ -54,4 +54,9 @@ describe User do
   it 'lists all the salutations' do
     expect(User.salutations).to eql(['Mr.', 'Mrs.', 'Ms.', 'Dr.'])
   end
+
+  it 'displays the professional name of the user' do
+    teacher = FactoryGirl.create(:teacher)
+    expect(teacher.professional_name).to eql('Mr. TeacherLast')
+  end
 end

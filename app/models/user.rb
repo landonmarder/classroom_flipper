@@ -30,6 +30,10 @@ class User < ActiveRecord::Base
     role == 'Teacher'
   end
 
+  def professional_name
+    "#{salutation} #{last_name}"
+  end
+
   class << self
     def role_options
       ['Student', 'Teacher']

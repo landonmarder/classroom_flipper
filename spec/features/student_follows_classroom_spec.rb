@@ -10,8 +10,9 @@ feature 'student follows a classroom' do
 
   let (:student) { FactoryGirl.create(:student) }
   scenario 'student searches for a classroom that exists and enrolls' do
-    FactoryGirl.create(:classroom, name: 'Biology')
-    FactoryGirl.create(:classroom, name: 'Math')
+    teacher = FactoryGirl.create(:teacher)
+    FactoryGirl.create(:classroom, name: 'Biology', user_id: teacher.id)
+    FactoryGirl.create(:classroom, name: 'Math', user_id: teacher.id)
 
     sign_in_as(student)
     click_link "Manage Classrooms"
@@ -19,6 +20,7 @@ feature 'student follows a classroom' do
     expect(page).to have_content('Manage Classrooms')
     expect(page).to have_content('Biology')
     expect(page).to have_content('Math')
+    expect(page).to have_content(teacher.professional_name)
 
     fill_in 'Classroom Name', with: 'Biology'
     click_button 'Search'
