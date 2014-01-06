@@ -42,9 +42,14 @@
           <td><%=classroom.name%></td>
           <td><%=classroom.description%></td>
           <td><%=classroom.user.professional_name %></td>
-          <td><%= button_to '+', enrollments_path(classroom_id: classroom.id) unless classroom.enrolled?(current_user) %></td>
-          <td>Enrolled</td>
-      </tr>
+          <td>
+            <% if classroom.enrolled?(current_user) %>
+            Enrolled
+            <% else %>
+            <%= button_to '+', enrollments_path(classroom_id: classroom.id) %>
+            <% end %>
+          </td>
+        </tr>
         <% end %>
     </tbody>
   </table>

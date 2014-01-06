@@ -32,7 +32,6 @@ feature 'student follows a classroom' do
     click_button '+'
     expect(page).to have_content('Thank you for enrolling!')
     expect(page).to have_content('Manage Classrooms')
-    expect(page).to have_content('Enrolled')
   end
 
   scenario 'student cannot enroll in a class that they are already enrolled in' do
