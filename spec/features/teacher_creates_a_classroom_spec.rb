@@ -1,6 +1,5 @@
 require 'spec_helper'
 
-
 feature 'teacher creates a classroom' do
 # Acceptance Criteria
 # * I must supply valid classroom name, description, teacher
