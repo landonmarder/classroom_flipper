@@ -2,7 +2,19 @@
 
 <h2><%= link_to 'Create Classroom', new_classroom_path%></h2>
 
-<% @classrooms.each do |classroom| %>
-  <h3>Name: <%=classroom.name%></h3>
-  <p>Description: <%=classroom.description%></p>
-<% end %>
+<table>
+  <thead>
+    <th>Class Name</th>
+    <th>Description</th>
+    <th>Actions</th>
+  </thead>
+  <tbody>
+  <tr>
+    <% @classrooms.each do |classroom| %>
+      <td><%=classroom.name%></td>
+      <td><%=classroom.description%></td>
+      <td><%= link_to 'Edit', '#'%> | <%= link_to 'Delete', '#'%></td>
+    <% end %>
+  </tr>
+  </tbody>
+</table>

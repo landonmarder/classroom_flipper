@@ -8,7 +8,7 @@ feature 'teacher creates a classroom' do
 # * I must click on create classroom button
 # * Student cannot create a classroom
 # Teacher can view all the classrooms that they have created
-# Each classroom in a list has title, description, destroy, edit, more info links
+# Each classroom in a list has title, destroy, edit, more info links
 
   let(:teacher) { FactoryGirl.create(:teacher) }
   let(:student) { FactoryGirl.create(:student) }
@@ -23,7 +23,12 @@ feature 'teacher creates a classroom' do
     fill_in 'Description', with: "Ms.TeacherLast's Classroom at Birth Elementary School"
     click_button 'Create Classroom'
 
-    expect(page).to have_content("Name: 6th Math Problem Solving")
+    expect(page).to have_content("Class Name")
+    expect(page).to have_content("6th Math Problem Solving")
+    expect(page).to have_content("Description")
+    expect(page).to have_content("Ms.TeacherLast's Classroom at Birth Elementary School")
+    expect(page).to have_content("Delete")
+    expect(page).to have_content("Edit")
     expect(page).to have_content('Your classroom is successfully created!')
   end
 
