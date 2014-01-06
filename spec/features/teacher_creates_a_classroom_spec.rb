@@ -64,5 +64,4 @@ feature 'teacher creates a classroom' do
     expect(page).to have_content('Welcome')
     expect(page).to have_content('Sorry, only registered teachers can create a classroom.')
   end
-  # scenario 'a teacher cannot create a classroom for another teacher' # Do I need this?
 end
