@@ -13,6 +13,9 @@ describe User do
   it { should have_valid(:last_name).when('Marder') }
   it { should_not have_valid(:last_name).when(nil, '') }
 
+  it { should have_valid(:salutation).when('Mr.', 'Ms.', 'Mrs.', 'Dr.') }
+  it { should_not have_valid(:salutation).when(nil, '', 'Something') }
+
   it { should have_many(:enrollments).dependent(:destroy) }
   it { should have_many(:classrooms).dependent(:destroy) }
   it { should have_many(:assignments).through(:classrooms) }

@@ -8,6 +8,7 @@ FactoryGirl.define do
     password 'Password123'
     password_confirmation 'Password123'
     role 'Student'
+    salutation 'Mr.'
   end
 end
 
@@ -19,5 +20,6 @@ FactoryGirl.define do
     password 'Password123'
     password_confirmation 'Password123'
     role 'Teacher'
+    salutation 'Mr.'
   end
 end

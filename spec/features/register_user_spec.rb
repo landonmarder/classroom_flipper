@@ -18,6 +18,7 @@ So that class time is more purposeful.
     visit root_path
     click_link 'Sign Up'
 
+    select 'Mr.', from: 'Salutation'
     fill_in 'First name', with: 'John'
     fill_in 'Last name', with: 'Smith'
     select 'Student', from: 'I am a ...'
