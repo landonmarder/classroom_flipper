@@ -12,6 +12,7 @@ feature 'user updates profile' do
     sign_in_as(teacher)
 
     click_link 'Edit Profile'
+    select 'Mr.', from: 'Salutation'
     fill_in 'First name', with: 'New First'
     fill_in 'Last name', with: 'New Last'
     fill_in 'Email', with: "new-#{teacher.email}"

@@ -6,6 +6,10 @@
           <%= devise_error_messages! %>
 
           <div class="clearfix input">
+            <%= f.input :salutation, collection: User.salutations, include_blank: false %>
+          </div>
+
+          <div class="clearfix input">
             <%= f.input :first_name %>
           </div>
 
