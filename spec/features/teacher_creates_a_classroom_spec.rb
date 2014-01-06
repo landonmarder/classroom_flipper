@@ -23,6 +23,7 @@ feature 'teacher creates a classroom' do
     fill_in 'Description', with: "Ms.TeacherLast's Classroom at Birth Elementary School"
     click_button 'Create Classroom'
 
+    expect(page).to have_content('Your classroom is successfully created!')
     expect(page).to have_content("Class Name")
     expect(page).to have_content("6th Math Problem Solving")
     expect(page).to have_content("Description")
@@ -30,7 +31,6 @@ feature 'teacher creates a classroom' do
     expect(page).to have_content("Delete")
     expect(page).to have_content("Edit")
     expect(page).to have_content("More Info")
-    expect(page).to have_content('Your classroom is successfully created!')
   end
 
   scenario 'teacher does not fill out creating the classroom for properly' do
