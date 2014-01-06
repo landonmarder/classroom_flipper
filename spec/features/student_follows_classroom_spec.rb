@@ -9,9 +9,9 @@ feature 'student follows a classroom' do
   # * I am redirected to my manage classroom page where it shows I am enrolled in the class
 
   let (:student) { FactoryGirl.create(:student) }
+  let (:teacher) { FactoryGirl.create(:teacher) }
 
   scenario 'student searches for a classroom that exists and enrolls' do
-    teacher = FactoryGirl.create(:teacher)
     FactoryGirl.create(:classroom, name: 'Biology', user_id: teacher.id)
     FactoryGirl.create(:classroom, name: 'Math', user_id: teacher.id)
 
@@ -35,7 +35,6 @@ feature 'student follows a classroom' do
   end
 
   scenario 'student cannot enroll in a class that they are already enrolled in' do
-    teacher = FactoryGirl.create(:teacher)
     classroom = FactoryGirl.create(:classroom, name: 'Biology', user_id: teacher.id)
     FactoryGirl.create(:enrollment, classroom_id: classroom.id, user_id: student.id)
 
@@ -55,7 +54,9 @@ feature 'student follows a classroom' do
     expect(page).to have_content('Manage Classrooms')
   end
 
-  scenario 'teacher does not have access to follow a classroom'
+  scenario 'teacher does not have access to follow a classroom' do
+    sign_in_as(teacher)
+  end
 
   scenario 'non signed in user does not have access to follow a classroom'
 end
