@@ -42,7 +42,8 @@
           <td><%=classroom.name%></td>
           <td><%=classroom.description%></td>
           <td><%=classroom.user.professional_name %></td>
-          <td><%= link_to '+', '#'%></td>
+          <td><%= button_to '+', enrollments_path(classroom_id: classroom.id) unless classroom.enrolled?(current_user) %></td>
+          <! -- TDD THAT ITS NO LONGER THERE -->
       </tr>
         <% end %>
     </tbody>

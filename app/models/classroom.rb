@@ -13,4 +13,8 @@ class Classroom < ActiveRecord::Base
   has_many :assignments,
     inverse_of: :classroom,
     dependent: :destroy
+
+  def enrolled?(user) # unit test true and false
+    enrollments.where(user_id: user.id).present?
+  end
 end
