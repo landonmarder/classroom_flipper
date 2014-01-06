@@ -48,7 +48,8 @@ feature 'teacher creates a classroom' do
 
   scenario 'a student does not see option to create a classroom' do
     sign_in_as(student)
-    expect(page).to_not have_content('Manage Classroom')
+    click_link 'Manage Classroom'
+    expect(page).to_not have_content('Create Classroom')
   end
 
   scenario 'a student cannot get to the page to create a classroom' do
