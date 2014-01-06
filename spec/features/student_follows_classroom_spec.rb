@@ -56,7 +56,12 @@ feature 'student follows a classroom' do
 
   scenario 'teacher does not have access to follow a classroom' do
     sign_in_as(teacher)
+    click_link 'Manage Classrooms'
+    expect(page).to_not have_content('Classroom Name')
   end
 
-  scenario 'non signed in user does not have access to follow a classroom'
+  scenario 'non signed in user does not have access to follow a classroom' do
+    visit root_path
+    expect(page).to_not have_content('Manage Classrooms')
+  end
 end
