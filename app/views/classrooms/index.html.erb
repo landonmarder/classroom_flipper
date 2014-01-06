@@ -1,6 +1,6 @@
 <h1 class="aligncenter">Manage Your Classrooms</h1>
 
-<h4><%= link_to 'Create Classroom', new_classroom_path%></h4>
+<h4><%= link_to 'Create Classroom', new_classroom_path if current_user.is_teacher?%></h4>
 <table class="aligncenter">
   <thead>
     <th>Class Name</th>
@@ -12,7 +12,9 @@
     <% @classrooms.each do |classroom| %>
       <td><%=classroom.name%></td>
       <td><%=classroom.description%></td>
+      <% if current_user.is_teacher? %>
       <td><%= link_to 'More Info', '#'%> | <%= link_to 'Edit', '#'%> | <%= link_to 'Delete', '#'%></td>
+      <% end %>
     <% end %>
   </tr>
   </tbody>

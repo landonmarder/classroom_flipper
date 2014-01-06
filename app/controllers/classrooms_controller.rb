@@ -1,5 +1,5 @@
 class ClassroomsController < ApplicationController
-  before_action :authorize_teacher
+  before_action :authorize_teacher, only: [:create, :new]
 
   def new
     @classroom = Classroom.new

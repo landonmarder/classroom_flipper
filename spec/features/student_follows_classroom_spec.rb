@@ -15,6 +15,7 @@ feature 'student follows a classroom' do
 
     sign_in_as(student)
     click_link "Manage Classrooms"
+    save_and_open_page
     expect(page).to have_content('Manage Classrooms')
     expect(page).to have_content('Biology')
     expect(page).to have_content('Math')
