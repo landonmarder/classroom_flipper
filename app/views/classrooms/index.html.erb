@@ -1,4 +1,6 @@
-<h1><%= @user.first_name%> <%= @user.last_name%>'s Classrooms</h1>
+<h1>Manage Your Classrooms</h1>
+
+<h2><%= link_to 'Create Classroom', new_classroom_path%></h2>
 
 <% @classrooms.each do |classroom| %>
   <h3>Name: <%=classroom.name%></h3>
