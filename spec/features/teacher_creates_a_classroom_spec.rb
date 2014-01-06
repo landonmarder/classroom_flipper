@@ -29,6 +29,7 @@ feature 'teacher creates a classroom' do
     expect(page).to have_content("Ms.TeacherLast's Classroom at Birth Elementary School")
     expect(page).to have_content("Delete")
     expect(page).to have_content("Edit")
+    expect(page).to have_content("More Info")
     expect(page).to have_content('Your classroom is successfully created!')
   end
 
