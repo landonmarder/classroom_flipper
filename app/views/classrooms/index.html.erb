@@ -33,8 +33,8 @@
   binding.pry
     <thead>
       <th>Class Name</th>
-      <!-- <th>Teacher</th> -->
       <th>Description</th>
+      <th>Teacher</th>
       <th>Enroll</th>
     </thead>
     <tbody>
@@ -42,6 +42,7 @@
         <tr>
           <td><%=classroom.name%></td>
           <td><%=classroom.description%></td>
+          <td><%=classroom.user.professional_name %></td>
           <td>+</td>
       </tr>
         <% end %>
