@@ -14,7 +14,7 @@ class Classroom < ActiveRecord::Base
     inverse_of: :classroom,
     dependent: :destroy
 
-  def enrolled?(user) # unit test true and false
+  def enrolled?(user)
     enrollments.where(user_id: user.id).present?
   end
 end

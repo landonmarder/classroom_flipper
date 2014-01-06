@@ -13,4 +13,12 @@ describe Classroom do
   it { should belong_to(:user) }
   it { should have_many(:assignments).dependent(:destroy) }
   it { should have_many(:enrollments).dependent(:destroy) }
+
+  it '#enrolled? is true when a student is enrolled in a class' do
+    student = FactoryGirl.create(:student)
+    classroom = FactoryGirl.create(:classroom)
+    expect(classroom.enrolled?(student)).to be false
+    FactoryGirl.create(:enrollment, classroom_id: classroom.id, user_id: student.id)
+    expect(classroom.enrolled?(student)).to be true
+  end
 end
