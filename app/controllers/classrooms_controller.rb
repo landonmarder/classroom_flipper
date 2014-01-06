@@ -19,7 +19,12 @@ class ClassroomsController < ApplicationController
 
   def index
     @user = current_user
-    @classrooms = Classroom.where(user: current_user)
+    if current_user.is_teacher?
+      @classrooms = Classroom.where(user: current_user)
+    else
+      @classrooms = Classroom.all
+    end
+
   end
 
   private
