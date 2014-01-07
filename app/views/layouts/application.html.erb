@@ -12,13 +12,15 @@
   </head>
   <body>
     <%= render 'layouts/header' %>
+
     <% flash.each do |name, msg| %>
-  <% if msg.is_a?(String) %>
-    <div data-alert class="alert-box">
-      <%= content_tag :div, msg %>
-    </div>
-  <% end %>
-<% end %>
+      <% if msg.is_a?(String) %>
+        <div data-alert class="alert-box">
+          <%= content_tag :div, msg %>
+        </div>
+      <% end %>
+    <% end %>
+
     <%= yield %>
     <%= javascript_include_tag "application" %>
   </body>
