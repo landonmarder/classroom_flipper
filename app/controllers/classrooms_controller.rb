@@ -40,6 +40,11 @@ class ClassroomsController < ApplicationController
     end
   end
 
+  def destroy
+    Classroom.find(params[:id]).destroy
+    redirect_to classrooms_path, notice: 'Classroom has been destroyed.'
+  end
+
   private
   def classroom_params
     params.require(:classroom).permit(:name, :description)
