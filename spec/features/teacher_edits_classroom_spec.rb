@@ -25,4 +25,17 @@ feature 'teacher edits classroom information' do
     expect(page).to have_content('Biology')
     expect(page).to_not have_content('MyString')
   end
+
+  scenario 'teacher tries to edit a classroom, but leaves the fields blank' do
+    FactoryGirl.create(:classroom, user_id: teacher.id)
+    sign_in_as(teacher)
+    visit classrooms_path
+    click_on 'Edit'
+    expect(page).to have_content('Edit Classroom:')
+    fill_in 'Name', with: ''
+    fill_in 'Description', with: ''
+    click_on 'Edit Classroom'
+    expect(page).to have_content("Namecan't be blank")
+    expect(page).to have_content("Descriptioncan't be blank")
+  end
 end
