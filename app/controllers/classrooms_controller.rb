@@ -1,12 +1,11 @@
 class ClassroomsController < ApplicationController
-  before_action :authorize_teacher, only: [:create, :new]
+  before_action :authorize_teacher, only: [:create, :new, :update]
 
   def new
     @classroom = Classroom.new
   end
 
   def create
-    @user = current_user
     @classroom = current_user.classrooms.build(classroom_params)
 
     if @classroom.save
@@ -25,7 +24,20 @@ class ClassroomsController < ApplicationController
       @search = Classroom.search(params[:q])
       @classrooms = @search.result
     end
+  end
 
+  def edit
+    @classroom = Classroom.find(params[:id])
+  end
+
+  def update
+    @classroom = Classroom.find(params[:id])
+
+    if @classroom.update(classroom_params)
+      redirect_to classrooms_path, notice: 'Classroom updated successfully.'
+    else
+      render :edit
+    end
   end
 
   private

@@ -1,0 +1,20 @@
+<section class="row"  id="signup">
+  <div class="small-12 large-4 small-centered large-centered column">
+  <h3 class="aligncenter title">Edit Classroom:</h3>
+      <fieldset>
+      <%= simple_form_for(@classroom) do |f| %>
+          <div class="clearfix input">
+            <%= f.input :name %>
+          </div>
+
+          <div class="clearfix input">
+            <%= f.input :description %>
+          </div>
+
+          <div class="clearfix input aligncenter">
+            <%= f.button :submit, 'Edit Classroom' %>
+          </div>
+        <% end %>
+      </fieldset>
+  </div>
+</section>
