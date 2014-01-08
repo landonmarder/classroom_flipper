@@ -28,10 +28,15 @@ feature 'teacher views class roster' do
   scenario 'teacher goes back to classrooms index page after viewing a classroom' do
     sign_in_as(teacher)
     visit classrooms_path
+
     click_link 'More Info'
     click_link 'Back to Classrooms'
     expect(page).to have_content('Manage Your Classrooms')
   end
 
-  scenario 'what does the student do?'
+  scenario 'what does the student do?' do
+    sign_in_as(student)
+    visit classrooms_path
+    expect(page).to_not have_content('More Info')
+  end
 end
