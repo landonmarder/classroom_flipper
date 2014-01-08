@@ -8,7 +8,6 @@ class AssignmentsController < ApplicationController
 
   def create
     @assignment = Assignment.new(assignment_params)
-
     if @assignment.save
       redirect_to assignments_path, notice: 'Assignment created successfully.'
     else
