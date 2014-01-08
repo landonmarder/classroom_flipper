@@ -40,5 +40,10 @@ feature 'teacher creates an assessment' do
   scenario 'unregistered user cannot create an assignment'
 
   scenario 'student cannot create an assignment' do
+    sign_in_as(student)
+    visit new_assignment_path
+
+    expect(page).to have_content('Welcome')
+    expect(page).to have_content('Sorry, only teachers can access this page.')
   end
 end

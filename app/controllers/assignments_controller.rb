@@ -1,4 +1,6 @@
 class AssignmentsController < ApplicationController
+  before_action :authorize_teacher, only: [:new, :create]
+
   def new
     @assignment = Assignment.new
     @classrooms = Classroom.where(user_id: current_user.id)
@@ -22,5 +24,11 @@ class AssignmentsController < ApplicationController
   private
   def assignment_params
     params.require(:assignment).permit(:classroom_id, :video_link, :title, :description)
+  end
+
+  def authorize_teacher
+    unless user_signed_in? and current_user.is_teacher?
+      access_denied("Sorry, only teachers can access this page.")
+    end
   end
 end
