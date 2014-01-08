@@ -23,6 +23,7 @@ feature 'teacher views class roster' do
 
     expect(page).to have_content('Biology')
     expect(page).to have_content(student.full_name)
+    expect(page).to have_content('You have 1 student enrolled')
     expect(page).to have_content('Remove Student')
     expect(page).to have_content('Back to Classrooms')
   end
@@ -33,9 +34,14 @@ feature 'teacher views class roster' do
     visit classrooms_path
     click_link 'More Info'
     click_link 'Back to Classrooms'
-    save_and_open_page
     expect(page).to have_content('Manage Your Classrooms')
   end
 
-  scenario 'teacher views clsasroom with 0 students enrolled'
+  scenario 'teacher views classroom with 0 students enrolled' do
+    sign_in_as(teacher)
+    FactoryGirl.create(:classroom, user_id: teacher.id)
+    visit classrooms_path
+    click_link 'More Info'
+    expect(page).to have_content('You have 0 students enrolled')
+  end
 end

@@ -1,5 +1,5 @@
 <h1><%= @classroom.name %></h1>
-<p>You have in <%= pluralize(@classroom.students.length, "student")%> enrolled.</p>
+<p>You have <%= pluralize(@classroom.students.length, "student")%> enrolled.</p>
   <table class="aligncenter">
     <thead>
       <td>Name</td>
