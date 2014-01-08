@@ -9,8 +9,20 @@ feature 'teacher creates an assessment' do
   # * I optionally write a brief description/instructions in the description box
   # * I must specify the questions that I want to be asked and the answers to the questions
 
-  scenario 'teacher creates an assignment successfully' do
+  let(:student) { enrollment.user }
+  let(:teacher) { enrollment.classroom.user }
+  let(:enrollment) { FactoryGirl.create(:enrollment) }
+
+  scenario 'teacher creates an assignment without questions' do
+    sign_in_as(teacher)
+    visit root_path
+    click_link 'Assignments'
+    save_and_open_page
   end
+
+  scenario 'teacher creates an assignment with questions'
+
+  scenario 'teacher creates an assignment with questions and options'
 
   scenario 'teacher gets errors with blank fields'
 
