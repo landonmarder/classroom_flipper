@@ -59,4 +59,9 @@ describe User do
     teacher = FactoryGirl.create(:teacher)
     expect(teacher.professional_name).to eql('Mr. TeacherLast')
   end
+
+  it 'displays the full name of the user' do
+    student = FactoryGirl.create(:student)
+    expect(student.full_name).to eql('StudentFirst StudentLast')
+  end
 end
