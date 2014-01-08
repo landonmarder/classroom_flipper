@@ -1,7 +1,7 @@
 <h1 class="aligncenter">Manage Your Classrooms</h1>
 
 <% if current_user.is_teacher? %>
-  <h4><%= link_to 'Create Classroom', new_classroom_path%></h4>
+  <p>You have <%= pluralize(@classrooms.length, "classroom")%>.</p>
   <table class="aligncenter">
     <thead>
       <th>Class Name</th>
@@ -19,6 +19,7 @@
       <% end %>
     </tbody>
   </table>
+  <h4><%= link_to 'Create Classroom', new_classroom_path%></h4>
 
 <% else %>
   <h1>My Classes</h1>
@@ -39,10 +40,11 @@
     <% end %>
     </tbody>
   </table>
+  <br>
   <h1>Enroll in a Classroom</h1>
   <%= search_form_for @search do |f| %>
-    <div class="field large-1 columns">
-      <%= f.label :name_cont, "Classroom Name", placeholder: "Classroom Name" %>
+    <div class="field small-4 columns">
+      <%= f.label :name_cont, "Classroom Name" %>
       <%= f.text_field :name_cont %>
     </div>
     <div class="actions"><%= f.submit "Search"%></div>
