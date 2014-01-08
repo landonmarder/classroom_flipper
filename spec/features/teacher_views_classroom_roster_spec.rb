@@ -28,7 +28,13 @@ feature 'teacher views class roster' do
   end
 
   scenario 'teacher goes back to classrooms index page after viewing a classroom' do
-
+    create_enrollment_environment(student, teacher)
+    sign_in_as(teacher)
+    visit classrooms_path
+    click_link 'More Info'
+    click_link 'Back to Classrooms'
+    save_and_open_page
+    expect(page).to have_content('Manage Your Classrooms')
   end
 
   scenario 'teacher views clsasroom with 0 students enrolled'
