@@ -21,6 +21,24 @@
   </table>
 
 <% else %>
+  <h1>My Classes</h1>
+  <p>You are enrolled in <%= pluralize(@student_enrollments.length, "classroom")%>.</p>
+  <table class="aligncenter">
+    <thead>
+      <td>Name</td>
+      <td>Description</td>
+      <td>Teacher</td>
+    </thead>
+    <tbody>
+    <% @student_enrollments.each do |enrollment| %>
+      <tr>
+        <td><%= enrollment.name%></td>
+        <td><%= enrollment.description%></td>
+        <td><%= enrollment.user.professional_name %></td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
   <h1>Enroll in a Classroom</h1>
   <%= search_form_for @search do |f| %>
     <div class="field">
