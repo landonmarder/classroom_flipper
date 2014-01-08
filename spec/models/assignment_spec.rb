@@ -19,4 +19,6 @@ describe Assignment do
 
   it { should have_many(:submissions).dependent(:destroy) }
   it { should have_many(:questions).dependent(:destroy) }
+
+  it { should accept_nested_attributes_for :questions }
 end

@@ -29,7 +29,28 @@ feature 'teacher creates an assessment' do
     expect(page).to have_content('Playing Sick')
   end
 
-  scenario 'teacher creates an assignment with questions'
+  scenario 'teacher creates an assignment with questions' do
+    sign_in_as(teacher)
+    visit root_path
+    click_link 'Create Assignment'
+
+    expect(page).to have_content('Create Assignment')
+    select 'Biology', from: 'Classroom'
+    fill_in 'Video URL', with: "http://www.youtube.com/watch?v=GEwEsdKrNcM"
+    fill_in 'Title', with: 'Playing Sick'
+    fill_in 'Description', with: 'Watch the videos and then answer the questions below.'
+    click_button 'Add Question'
+    fill_in 'Prompt', with: 'Does this work?'
+    click_button 'Create Question'
+    click_button 'Create Assignment'
+
+    expect(page).to have_content('Assignment created successfully.')
+    expect(page).to have_content('Playing Sick')
+
+    click_link('Playing Sick')
+    expect(page).to have_content('Does this work?')
+
+  end
 
   scenario 'teacher creates an assignment with questions and options'
 

@@ -16,4 +16,7 @@ class Assignment < ActiveRecord::Base
   has_many :questions,
     inverse_of: :assignment,
     dependent: :destroy
+
+  accepts_nested_attributes_for :questions
+
 end
