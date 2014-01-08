@@ -12,4 +12,14 @@ describe Enrollment do
 
   it { should have_many(:submissions).dependent(:destroy) }
 
+  it 'should list all the classes that a student is enrolled in' do
+    student = FactoryGirl.create(:student)
+    teacher = FactoryGirl.create(:teacher)
+    classroom_bio = FactoryGirl.create(:classroom, name: 'Biology', user_id: teacher.id)
+    classroom_math = FactoryGirl.create(:classroom, name: 'Math', user_id: teacher.id)
+    FactoryGirl.create(:enrollment, user_id: student.id, classroom_id: classroom_bio.id)
+    FactoryGirl.create(:enrollment, user_id: student.id, classroom_id: classroom_math.id)
+    expect(Enrollment.classes_for(student)).to eql([classroom_bio, classroom_math])
+  end
+
 end

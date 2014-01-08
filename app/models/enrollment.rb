@@ -11,4 +11,13 @@ class Enrollment < ActiveRecord::Base
 
   belongs_to :user,
     inverse_of: :enrollments
+
+  def self.classes_for(user)
+    enrollments = Enrollment.where(user_id: user.id)
+    enrollment_holder = []
+    enrollments.each do |enrollment|
+      enrollment_holder << Classroom.find(enrollment.classroom_id)
+    end
+    enrollment_holder
+  end
 end

@@ -23,6 +23,7 @@ class ClassroomsController < ApplicationController
     else
       @search = Classroom.search(params[:q])
       @classrooms = @search.result
+      @student_enrollments = Enrollment.classes_for(current_user)
     end
   end
 

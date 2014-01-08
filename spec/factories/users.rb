@@ -8,7 +8,7 @@ FactoryGirl.define do
     password 'Password123'
     password_confirmation 'Password123'
     role 'Student'
-    salutation 'Mr.'
+    salutation 'Ms.'
   end
 end
 
