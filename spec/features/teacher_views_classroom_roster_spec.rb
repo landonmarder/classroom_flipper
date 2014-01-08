@@ -24,7 +24,7 @@ feature 'teacher views class roster' do
     expect(page).to have_content('Biology')
     expect(page).to have_content(student.full_name)
     expect(page).to have_content('You have 1 student enrolled')
-    expect(page).to have_content('Remove Student')
+    expect(page).to have_content('-')
     expect(page).to have_content('Back to Classrooms')
   end
 
