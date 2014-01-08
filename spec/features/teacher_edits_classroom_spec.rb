@@ -9,8 +9,9 @@ feature 'teacher edits classroom information' do
   # * I can change description or name as long as they are valid
   # * Saved when I click submit
 
-  let(:teacher) { classroom.user }
-  let(:classroom) { FactoryGirl.create(:classroom) }
+  let(:student) { enrollment.user }
+  let(:teacher) { enrollment.classroom.user }
+  let(:enrollment) { FactoryGirl.create(:enrollment)}
 
   scenario 'teacher successfully edits a classroom' do
     sign_in_as(teacher)
@@ -40,5 +41,9 @@ feature 'teacher edits classroom information' do
     expect(page).to have_content("Descriptioncan't be blank")
   end
 
-  scenario 'what can a student do?'
+  scenario 'student cannot edit a classroom' do
+    sign_in_as(student)
+    visit classroom_path(enrollment.classroom)
+    expect(page).to have_content('Sorry, only teachers can access this page.')
+  end
 end

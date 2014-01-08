@@ -8,6 +8,7 @@ feature 'teacher deletes a classroom' do
   # * The classroom is deleted
 
   let (:teacher) { FactoryGirl.create(:teacher) }
+  let (:student) { FactoryGirl.create(:student) }
 
   scenario 'teacher deletes a classroom properly' do
     FactoryGirl.create(:classroom, user_id: teacher.id)
@@ -20,5 +21,9 @@ feature 'teacher deletes a classroom' do
     expect(page).to have_content('Classroom has been destroyed.')
   end
 
-  scenario 'what does a student do?'
+  scenario 'student cannot delete a classroom' do
+    sign_in_as(student)
+    visit classrooms_path
+    expect(page).to_not have_content('Actions')
+  end
 end
