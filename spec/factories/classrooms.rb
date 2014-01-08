@@ -4,6 +4,6 @@ FactoryGirl.define do
   factory :classroom do
     name "MyString"
     description "MyText"
-    user_id 1
+    association :user, factory: :teacher
   end
 end

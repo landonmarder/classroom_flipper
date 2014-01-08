@@ -18,7 +18,6 @@ feature 'student follows a classroom' do
     sign_in_as(student)
     click_link "Manage Classrooms"
 
-    expect(page).to have_content('Manage Classrooms')
     expect(page).to have_content('Biology')
     expect(page).to have_content('Math')
     expect(page).to have_content(teacher.professional_name)
@@ -41,7 +40,6 @@ feature 'student follows a classroom' do
     sign_in_as(student)
     click_link "Manage Classrooms"
 
-    expect(page).to have_content('Manage Classrooms')
     expect(page).to have_content('Biology')
     expect(page).to have_content(teacher.professional_name)
 
@@ -50,8 +48,6 @@ feature 'student follows a classroom' do
 
     expect(page).to have_content('Biology')
     expect(page).to have_content('Enrolled')
-
-    expect(page).to have_content('Manage Classrooms')
   end
 
   scenario 'teacher does not have access to follow a classroom' do

@@ -24,13 +24,8 @@ feature 'teacher creates a classroom' do
     click_button 'Create Classroom'
 
     expect(page).to have_content('Your classroom is successfully created!')
-    expect(page).to have_content("Class Name")
     expect(page).to have_content("6th Math Problem Solving")
-    expect(page).to have_content("Description")
     expect(page).to have_content("Ms.TeacherLast's Classroom at Birth Elementary School")
-    expect(page).to have_content("Delete")
-    expect(page).to have_content("Edit")
-    expect(page).to have_content("More Info")
   end
 
   scenario 'teacher does not fill out creating the classroom for properly' do

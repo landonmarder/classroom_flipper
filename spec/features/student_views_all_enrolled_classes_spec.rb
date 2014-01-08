@@ -19,4 +19,6 @@ feature 'student views all classes she is enrolled in' do
     visit classrooms_path
     expect(page).to have_content('You are enrolled in 1 classroom.')
   end
+
+  scenario 'what does a teacher do?'
 end

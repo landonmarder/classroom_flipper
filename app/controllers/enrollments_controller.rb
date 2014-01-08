@@ -13,4 +13,9 @@ class EnrollmentsController < ApplicationController
       redirect_to classrooms_path
     end
   end
+
+  def destroy
+    Enrollment.find_by(classroom_id: params['id'], user_id: params['user_id']).destroy
+    redirect_to classrooms_path, notice: 'Student has been removed.'
+  end
 end

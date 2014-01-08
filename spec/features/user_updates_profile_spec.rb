@@ -20,6 +20,7 @@ feature 'user updates profile' do
     fill_in 'Password confirmation', with: 'password34567'
     fill_in 'Current password', with: teacher.password
     click_button 'Update'
+
     expect(page).to have_content('Thanks for keeping us updated!')
   end
 
@@ -34,6 +35,7 @@ feature 'user updates profile' do
     fill_in 'Password confirmation', with: 'password34567'
     fill_in 'Current password', with: "#{teacher.password}NOT"
     click_button 'Update'
+
     expect(page).to have_content('Current password is invalid')
   end
 

@@ -12,24 +12,20 @@ feature 'teacher views class roster' do
   # * If there are no students enrolled, tells you there are 0 students enrolled
   # * Teacher can navigate back to classroom index page
 
-  let(:student) { FactoryGirl.create(:student) }
-  let(:teacher) { FactoryGirl.create(:teacher)}
+  let(:student) { enrollment.user }
+  let(:teacher) { enrollment.classroom.user }
+  let(:enrollment) { FactoryGirl.create(:enrollment) }
 
   scenario 'teacher views classroom with 1 student enrolled' do
-    create_enrollment_environment(student, teacher)
     sign_in_as(teacher)
     visit classrooms_path
     click_link 'More Info'
 
-    expect(page).to have_content('Biology')
     expect(page).to have_content(student.full_name)
-    expect(page).to have_content('You have 1 student enrolled')
-    expect(page).to have_content('-')
     expect(page).to have_content('Back to Classrooms')
   end
 
   scenario 'teacher goes back to classrooms index page after viewing a classroom' do
-    create_enrollment_environment(student, teacher)
     sign_in_as(teacher)
     visit classrooms_path
     click_link 'More Info'
@@ -37,11 +33,5 @@ feature 'teacher views class roster' do
     expect(page).to have_content('Manage Your Classrooms')
   end
 
-  scenario 'teacher views classroom with 0 students enrolled' do
-    sign_in_as(teacher)
-    FactoryGirl.create(:classroom, user_id: teacher.id)
-    visit classrooms_path
-    click_link 'More Info'
-    expect(page).to have_content('You have 0 students enrolled')
-  end
+  scenario 'what does the student do?'
 end

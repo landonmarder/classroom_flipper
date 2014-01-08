@@ -2,7 +2,7 @@
 
 FactoryGirl.define do
   factory :enrollment do
-    user_id 1
-    classroom_id 1
+    association :user, factory: :student
+    classroom
   end
 end
