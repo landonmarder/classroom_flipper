@@ -1,0 +1,18 @@
+<h1><%= @classroom.name %></h1>
+<p>You have in <%= pluralize(@classroom.students.length, "student")%> enrolled.</p>
+  <table class="aligncenter">
+    <thead>
+      <td>Name</td>
+      <td>Action</td>
+    </thead>
+    <tbody>
+    <% @students.each do |student| %>
+      <tr>
+        <td><%= student.full_name%></td>
+        <td><%= link_to 'Remove Student', '#' %></td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+
+  <%= link_to 'Back to Classrooms', '#' %>

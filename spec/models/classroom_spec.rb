@@ -14,11 +14,18 @@ describe Classroom do
   it { should have_many(:assignments).dependent(:destroy) }
   it { should have_many(:enrollments).dependent(:destroy) }
 
+  let(:student) { FactoryGirl.create(:student) }
+  let(:classroom) { FactoryGirl.create(:classroom) }
+
   it '#enrolled? is true when a student is enrolled in a class' do
-    student = FactoryGirl.create(:student)
-    classroom = FactoryGirl.create(:classroom)
     expect(classroom.enrolled?(student)).to be false
     FactoryGirl.create(:enrollment, classroom_id: classroom.id, user_id: student.id)
     expect(classroom.enrolled?(student)).to be true
+  end
+
+  it 'makes an array of all the students in a classroom' do
+    expect(classroom.students).to eql([])
+    FactoryGirl.create(:enrollment, classroom_id: classroom.id, user_id: student.id)
+    expect(classroom.students).to eql([student])
   end
 end

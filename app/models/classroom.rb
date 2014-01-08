@@ -17,4 +17,14 @@ class Classroom < ActiveRecord::Base
   def enrolled?(user)
     enrollments.where(user_id: user.id).present?
   end
+
+  def students
+    students = []
+    enrollments = Enrollment.where(classroom_id: self.id)
+    enrollments.each do |enrollment|
+      user_id = enrollment.user_id
+      students << User.find(user_id)
+    end
+    students
+  end
 end

@@ -20,7 +20,7 @@ feature 'teacher views class roster' do
     sign_in_as(teacher)
     visit classrooms_path
     click_link 'More Info'
-
+    save_and_open_page
     expect(page).to have_content('Biology')
     expect(page).to have_content(student.full_name)
     expect(page).to have_content('Remove Student')

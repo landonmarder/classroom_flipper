@@ -13,7 +13,7 @@
       <tr>
         <td><%=classroom.name%></td>
         <td><%=classroom.description%></td>
-        <td><%= link_to 'More Info', '#'%> | <%= link_to 'Edit', edit_classroom_path(classroom) %> |
+        <td><%= link_to 'More Info', classroom%> | <%= link_to 'Edit', edit_classroom_path(classroom) %> |
         <%= link_to 'Delete', classroom, method: :delete, data: { confirm: 'Are you sure you want to delete the classroom? This cannot be undone.' } %></td>
       </tr>
       <% end %>

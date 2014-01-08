@@ -46,6 +46,11 @@ class ClassroomsController < ApplicationController
     redirect_to classrooms_path, notice: 'Classroom has been destroyed.'
   end
 
+  def show
+    @classroom = Classroom.find(params[:id])
+    @students = @classroom.students
+  end
+
   private
   def classroom_params
     params.require(:classroom).permit(:name, :description)
