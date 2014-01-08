@@ -51,12 +51,12 @@ feature 'teacher creates a classroom' do
     sign_in_as(student)
     visit new_classroom_path
     expect(page).to have_content('Welcome')
-    expect(page).to have_content('Sorry, only registered teachers can create a classroom.')
+    expect(page).to have_content('Sorry, only teachers can access this page.')
   end
 
   scenario 'a non-authenticated user tries to create a classroom' do
     visit new_classroom_path
     expect(page).to have_content('Welcome')
-    expect(page).to have_content('Sorry, only registered teachers can create a classroom.')
+    expect(page).to have_content('Sorry, only teachers can access this page.')
   end
 end

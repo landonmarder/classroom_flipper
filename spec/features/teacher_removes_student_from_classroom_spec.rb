@@ -21,11 +21,9 @@ feature 'teacher removes student from classroom' do
     expect(page).to_not have_content(student.full_name)
   end
 
-  scenario 'student can not remove a student' do
+  scenario 'student cannot remove a student' do
     sign_in_as(student)
     visit classroom_path(enrollment.classroom)
-
-    expect(page).to_not have_content(student.full_name)
-    click_button('-')
+    expect(page).to have_content('Sorry, only teachers can access this page.')
   end
 end

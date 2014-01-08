@@ -1,4 +1,5 @@
 class EnrollmentsController < ApplicationController
+  before_action :authorize_teacher, only: [:destroy]
 
   def create
     @enrollment = Enrollment.new
@@ -18,4 +19,11 @@ class EnrollmentsController < ApplicationController
     Enrollment.find_by(classroom_id: params['id'], user_id: params['user_id']).destroy
     redirect_to classrooms_path, notice: 'Student has been removed.'
   end
+
+  private
+    def authorize_teacher
+      unless user_signed_in? and current_user.is_teacher?
+        access_denied("Sorry, only registered teachers can create a classroom.")
+      end
+    end
 end

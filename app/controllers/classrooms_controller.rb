@@ -1,5 +1,5 @@
 class ClassroomsController < ApplicationController
-  before_action :authorize_teacher, only: [:create, :new, :update]
+  before_action :authorize_teacher, only: [:create, :new, :update, :show]
 
   def new
     @classroom = Classroom.new
@@ -58,7 +58,7 @@ class ClassroomsController < ApplicationController
 
   def authorize_teacher
     unless user_signed_in? and current_user.is_teacher?
-      access_denied("Sorry, only registered teachers can create a classroom.")
+      access_denied("Sorry, only teachers can access this page.")
     end
   end
 end
