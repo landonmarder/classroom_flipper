@@ -1,0 +1,11 @@
+<h1>Create Assignment</h1>
+
+<fieldset>
+  <%= simple_form_for(@assignment) do |f| %>
+    <%= f.input :classroom_id, collection: @classrooms, include_blank: true, label: "Classroom" %>
+    <%= f.input :video_link, label: 'Video URL' %>
+    <%= f.input :title %>
+    <%= f.input :description %>
+    <%= f.button :submit %>
+  <% end %>
+</fieldset>
