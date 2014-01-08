@@ -2,10 +2,10 @@
 
 FactoryGirl.define do
   factory :assignment do
-    classroom_id 1
-    video_link "MyString"
-    title "MyString"
-    description "MyText"
-    status "MyString"
+    video_link "http://www.youtube.com/watch?v=GEwEsdKrNcM"
+    title "Playing Sick"
+    description "Watch this video and then answer the questions below"
+    status "Live"
+    classroom
   end
 end
