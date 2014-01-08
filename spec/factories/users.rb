@@ -2,20 +2,20 @@
 
 FactoryGirl.define do
   factory :student, :class => 'User' do
-    first_name 'StudentFirst'
-    last_name 'StudentLast'
+    first_name 'Kobe'
+    last_name 'Bryant'
     sequence(:email) { |n| "student#{n}@example.com" }
     password 'Password123'
     password_confirmation 'Password123'
     role 'Student'
-    salutation 'Ms.'
+    salutation 'Mr.'
   end
 end
 
 FactoryGirl.define do
   factory :teacher, :class => 'User' do
-    first_name 'TeacherFirst'
-    last_name 'TeacherLast'
+    first_name 'Michael'
+    last_name 'Jordan'
     sequence(:email) { |n| "teacher#{n}@example.com" }
     password 'Password123'
     password_confirmation 'Password123'

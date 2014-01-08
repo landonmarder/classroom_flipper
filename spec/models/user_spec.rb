@@ -57,11 +57,11 @@ describe User do
 
   it 'displays the professional name of the user' do
     teacher = FactoryGirl.create(:teacher)
-    expect(teacher.professional_name).to eql('Mr. TeacherLast')
+    expect(teacher.professional_name).to eql('Mr. Jordan')
   end
 
   it 'displays the full name of the user' do
     student = FactoryGirl.create(:student)
-    expect(student.full_name).to eql('StudentFirst StudentLast')
+    expect(student.full_name).to eql('Kobe Bryant')
   end
 end

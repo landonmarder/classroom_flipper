@@ -2,8 +2,8 @@
 
 FactoryGirl.define do
   factory :classroom do
-    name "MyString"
-    description "MyText"
+    name "Biology"
+    description "6th grade 2013-2014"
     association :user, factory: :teacher
   end
 end

@@ -13,10 +13,10 @@ feature 'teacher deletes a classroom' do
     FactoryGirl.create(:classroom, user_id: teacher.id)
     sign_in_as(teacher)
     visit classrooms_path
-    expect(page).to have_content('MyString')
+    expect(page).to have_content('Biology')
     click_link 'Delete'
 
-    expect(page).to_not have_content('MyString')
+    expect(page).to_not have_content('Biology')
     expect(page).to have_content('Classroom has been destroyed.')
   end
 
