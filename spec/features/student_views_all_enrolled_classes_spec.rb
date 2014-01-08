@@ -11,14 +11,17 @@ feature 'student views all classes she is enrolled in' do
 
   scenario 'student sees a list of a class they are enrolled in' do
     sign_in_as(student)
+
     teacher = FactoryGirl.create(:teacher)
-    subject = FactoryGirl.create(:classroom, name: 'Biology', user_id: teacher.id)
+    subject = FactoryGirl.create(:classroom)
     visit classrooms_path
     expect(page).to_not have_content('You are enrolled 0 classrooms.')
-    FactoryGirl.create(:enrollment, classroom_id: subject.id, user_id: student.id)
+
+    FactoryGirl.create(:enrollment, user_id: student.id)
     visit classrooms_path
     expect(page).to have_content('You are enrolled in 1 classroom.')
   end
 
-  scenario 'what does a teacher do?'
+  scenario 'what does a teacher do?' do
+  end
 end
