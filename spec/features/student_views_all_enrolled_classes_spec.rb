@@ -17,7 +17,6 @@ feature 'student views all classes she is enrolled in' do
     expect(page).to_not have_content('You are enrolled 0 classrooms.')
     FactoryGirl.create(:enrollment, classroom_id: subject.id, user_id: student.id)
     visit classrooms_path
-    save_and_open_page
     expect(page).to have_content('You are enrolled in 1 classroom.')
   end
 
