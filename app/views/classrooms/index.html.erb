@@ -42,7 +42,7 @@
   <h1>Enroll in a Classroom</h1>
   <%= search_form_for @search do |f| %>
     <div class="field large-1 columns">
-      <%= f.label :name_cont, "Classroom Name" %>
+      <%= f.label :name_cont, "Classroom Name", placeholder: "Classroom Name" %>
       <%= f.text_field :name_cont %>
     </div>
     <div class="actions"><%= f.submit "Search"%></div>
