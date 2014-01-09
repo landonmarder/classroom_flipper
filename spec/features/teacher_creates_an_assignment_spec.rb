@@ -55,15 +55,29 @@ feature 'teacher creates an assessment' do
     fill_in 'Video URL', with: "http://www.youtube.com/watch?v=GEwEsdKrNcM"
     fill_in 'Title', with: 'Playing Sick'
     fill_in 'Description', with: 'Watch the videos and then answer the questions below.'
-    within(".question_1"){fill_in 'Question', with: 'Does this work?'}
+    within(".question_1"){ fill_in 'Question', with: 'Does this work?' }
+    within(".question_1_option_1") { fill_in 'Option', with: 'The answer is C.' }
+    within(".question_1_option_2") { fill_in 'Option', with: 'The answer is C.' }
+    within(".question_1_option_3") { fill_in 'Option', with: 'The answer is C.' }
+    within(".question_1_option_4") { fill_in 'Option', with: 'The answer is C.' }
     within(".question_2"){fill_in 'Question', with: 'Does this work?'}
+    within(".question_2_option_1") { fill_in 'Option', with: 'The answer is C.' }
+    within(".question_2_option_2") { fill_in 'Option', with: 'The answer is C.' }
+    within(".question_2_option_3") { fill_in 'Option', with: 'The answer is C.' }
+    within(".question_2_option_4") { fill_in 'Option', with: 'The answer is C.' }
     within(".question_3"){fill_in 'Question', with: 'Does this work?'}
+    within(".question_3_option_1") { fill_in 'Option', with: 'The answer is C.' }
+    within(".question_3_option_2") { fill_in 'Option', with: 'The answer is C.' }
+    within(".question_3_option_3") { fill_in 'Option', with: 'The answer is C.' }
+    within(".question_3_option_4") { fill_in 'Option', with: 'The answer is C.' }
+
     click_button 'Create Assignment'
     expect(page).to have_content('Assignment created successfully.')
     expect(page).to have_content('Playing Sick')
 
     click_link('Playing Sick')
     expect(page).to have_content('1. Does this work?')
+    expect(page).to have_content('The answer is C.')
   end
 
   scenario 'teacher gets errors with blank fields'
