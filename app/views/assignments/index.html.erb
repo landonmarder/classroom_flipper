@@ -12,7 +12,7 @@
       <tr>
         <td><%=link_to assignment.title, assignment%></td>
         <td><%=assignment.classroom.name%></td>
-        <td><%=assignment.created_at.strftime('%a. %B %y')%></td>
+        <td><%=assignment.created_at.strftime('%a. %B %d')%></td>
         <td><%=assignment.status%></td>
       </tr>
       <% end %>
