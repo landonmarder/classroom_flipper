@@ -1,8 +1,8 @@
 require 'spec_helper'
 
 describe Option do
-  it { should have_valid(:question_id).when(1) }
-  it { should_not have_valid(:question_id).when(nil) }
+  it { should have_valid(:question).when(Question.new) }
+  it { should_not have_valid(:question).when(nil) }
 
   it { should have_valid(:weight).when(1, 0) }
 

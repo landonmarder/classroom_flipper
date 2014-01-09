@@ -42,14 +42,29 @@ feature 'teacher creates an assessment' do
     within(".question_2"){fill_in 'Question', with: 'Does this work?'}
     within(".question_3"){fill_in 'Question', with: 'Does this work?'}
     click_button 'Create Assignment'
+    expect(page).to have_content("can't be blank")
+  end
+
+  scenario 'teacher creates an assignment with questions and options' do
+    sign_in_as(teacher)
+    visit root_path
+    click_link 'Create Assignment'
+
+    expect(page).to have_content('Create Assignment')
+    select 'Biology', from: 'Classroom'
+    fill_in 'Video URL', with: "http://www.youtube.com/watch?v=GEwEsdKrNcM"
+    fill_in 'Title', with: 'Playing Sick'
+    fill_in 'Description', with: 'Watch the videos and then answer the questions below.'
+    within(".question_1"){fill_in 'Question', with: 'Does this work?'}
+    within(".question_2"){fill_in 'Question', with: 'Does this work?'}
+    within(".question_3"){fill_in 'Question', with: 'Does this work?'}
+    click_button 'Create Assignment'
     expect(page).to have_content('Assignment created successfully.')
     expect(page).to have_content('Playing Sick')
 
     click_link('Playing Sick')
     expect(page).to have_content('1. Does this work?')
   end
-
-  scenario 'teacher creates an assignment with questions and options'
 
   scenario 'teacher gets errors with blank fields'
 

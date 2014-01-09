@@ -2,7 +2,7 @@
 
 FactoryGirl.define do
   factory :question do
-    assignment_id 1
-    prompt "MyText"
+    assignment
+    prompt "Is this a question?"
   end
 end
