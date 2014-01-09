@@ -22,7 +22,7 @@ class AssignmentsController < ApplicationController
 
   def index
     @classrooms = current_user.classrooms
-    @assignments = @classrooms.map { |classroom| classroom.assignments }.flatten # Move this into Assignment model
+    @assignments = @classrooms.map { |classroom| classroom.assignments }.flatten.sort_by{ |assignment| assignment.created_at }.reverse! # Move this into Assignment model
   end
 
   def show
