@@ -16,4 +16,49 @@
 //= require turbolinks
 //= require_tree .
 
-$(function(){ $(document).foundation(); });
+$(function(){
+  $('#classroom_search').on('submit', function(e) {
+    e.preventDefault();
+    console.log(e);
+  });
+  $('#classroom_search').on('keyup', function(e) {
+    e.preventDefault();
+    var query = $("#q_name_cont").val();
+    var data = {
+      'q': { 'name_cont': query }
+    }
+    $.ajax({
+      type: "GET",
+      contentType: "application/json; charset=utf-8",
+      url: "/search",
+      dataType: 'json',
+      data: data,
+      success: function(data){
+        console.log(data)
+        console.log("success!");
+
+        renderResults(data);
+      },
+      error: function(data) {
+        console.log(data)
+        console.log("failure!");
+      }
+    })
+  });
+
+  var renderResults = function(data) {
+    var table = $('#search-results tbody');
+    var rows = table.find('tr').hide();
+    _.each(data, function(d){
+      $('#classroom_' + d.id).show();
+    });
+
+  };
+
+
+
+  $(document).foundation();
+
+
+
+});

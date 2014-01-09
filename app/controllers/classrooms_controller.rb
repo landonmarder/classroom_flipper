@@ -1,6 +1,6 @@
 class ClassroomsController < ApplicationController
   before_action :authorize_teacher, only: [:create, :new, :update, :show]
-
+  respond_to :html, :json, :js
   def new
     @classroom = Classroom.new
   end
@@ -24,6 +24,12 @@ class ClassroomsController < ApplicationController
       @search = Classroom.search(params[:q])
       @classrooms = @search.result
       @student_enrollments = Enrollment.classes_for(current_user)
+    end
+  end
+
+  def search
+    respond_to do |format|
+      format.js { render :json => Classroom.search(params[:q]).result }
     end
   end
 

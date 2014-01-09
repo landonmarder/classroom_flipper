@@ -50,7 +50,7 @@
     <div class="actions"><%= f.submit "Search"%></div>
   <% end %>
 
-  <table class="aligncenter">
+  <table class="aligncenter" id="search-results">
     <thead>
       <th>Class Name</th>
       <th>Description</th>
@@ -59,7 +59,7 @@
     </thead>
     <tbody>
         <% @classrooms.each do |classroom| %>
-        <tr>
+        <tr id='classroom_<%= classroom.id %>'>
           <td><%=classroom.name%></td>
           <td><%=classroom.description%></td>
           <td><%=classroom.user.professional_name %></td>
