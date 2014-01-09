@@ -24,6 +24,7 @@ class AssignmentsController < ApplicationController
 
   def show
     @assignment = Assignment.find(params[:id])
+    @question_number = 1
   end
 
   private

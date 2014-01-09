@@ -1,2 +1,14 @@
-<h1><%= @assignment.title %></h1>
-<%= @assignment.questions.first.prompt %>
+<h1>Title: <%= @assignment.title %></h1>
+<p><%= @assignment.video_link %></p>
+<h3>Description: <%= @assignment.description %></h3>
+
+
+<% @assignment.questions.each do |question| %>
+  <div><%= @question_number %>. <%= question.prompt %></div>
+  <% @question_number = @question_number + 1 %>
+<% end %>
+
+<div>Status: <%= @assignment.status %></div>
+
+<%= link_to 'Close Video', '#' %>
+<%= link_to 'Analyze Results', '#' %>

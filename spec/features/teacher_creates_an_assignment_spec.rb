@@ -46,8 +46,7 @@ feature 'teacher creates an assessment' do
     expect(page).to have_content('Playing Sick')
 
     click_link('Playing Sick')
-    save_and_open_page
-    expect(page).to have_content('Does this work?')
+    expect(page).to have_content('1. Does this work?')
   end
 
   scenario 'teacher creates an assignment with questions and options'
