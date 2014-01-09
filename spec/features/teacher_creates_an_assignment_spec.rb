@@ -85,9 +85,21 @@ feature 'teacher creates an assessment' do
     expect(page).to have_content('The answer is A.')
   end
 
-  scenario 'teacher gets an error if not youtube or vimeo'
+  scenario 'teacher gets an error if not youtube or vimeo' do
+    sign_in_as(teacher)
+    visit root_path
+    click_link 'Create Assignment'
 
-  scenario 'unregistered user cannot create an assignment'
+    expect(page).to have_content('Create Assignment')
+    fill_in 'Video URL', with: 'badwebsite'
+    click_button 'Create Assignment'
+    expect(page).to have_content('is invalid')
+  end
+
+  scenario 'unregistered user cannot create an assignment' do
+    visit new_assignment_path
+    expect(page).to have_content('Sorry, only teachers can access this page.')
+  end
 
   scenario 'student cannot create an assignment' do
     sign_in_as(student)
