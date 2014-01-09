@@ -4,8 +4,13 @@
 
 
 <% @assignment.questions.each do |question| %>
-  <div><%= @question_number %>. <%= question.prompt %></div>
-  <% @question_number = @question_number + 1 %>
+  <div>
+    <%= @question_number %>. <%= question.prompt %>
+      <% @question_number = @question_number + 1 %>
+      <% question.options.each do |option| %>
+      <%= option.option_value %>
+    <% end %>
+  </div>
 <% end %>
 
 <div>Status: <%= @assignment.status %></div>

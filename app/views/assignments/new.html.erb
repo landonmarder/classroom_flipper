@@ -10,7 +10,20 @@
   <h1>Questions:</h1>
     <% n = 1 %>
     <%= f.simple_fields_for :questions do |builder| %>
-      <div class=<%="question_#{n}"%>><%= builder.input :prompt, label: "Question" %></div>
+      <div class=<%= "question_#{n}" %>>
+        <%= builder.input :prompt, label: "Question" %>
+      </div>
+
+      <h5>Choices:</h5>
+      <% c = 1%>
+      <%= builder.simple_fields_for :options do |builder_choice| %>
+        <div class=<%= "question_#{n}_option_#{c}" %>>
+          <%= builder_choice.input :option_value, label: "Option" %>
+          <%= builder_choice.input :weight, label: "Weight", collection: [0,1], include_blank: false %>
+        </div>
+        <% c = c + 1 %>
+      <% end %>
+
       <% n = n + 1 %>
     <% end %>
   <%= f.button :submit %>

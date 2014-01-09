@@ -9,6 +9,8 @@ class Question < ActiveRecord::Base
     inverse_of: :question,
     dependent: :destroy
 
+  accepts_nested_attributes_for :options
+
   has_many :answers,
     inverse_of: :question,
     dependent: :destroy
