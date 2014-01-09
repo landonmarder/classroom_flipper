@@ -3,11 +3,13 @@ class AssignmentsController < ApplicationController
 
   def new
     @assignment = Assignment.new
+    3.times{ @assignment.questions.build }
     @classrooms = Classroom.where(user_id: current_user.id)
   end
 
   def create
     @assignment = Assignment.new(assignment_params)
+
     if @assignment.save
       redirect_to assignments_path, notice: 'Assignment created successfully.'
     else
@@ -20,9 +22,14 @@ class AssignmentsController < ApplicationController
     @assignments = @classrooms.map { |classroom| classroom.assignments }.flatten # Move this into Assignment model
   end
 
+  def show
+    @assignment = Assignment.find(params[:id])
+  end
+
   private
   def assignment_params
-    params.require(:assignment).permit(:classroom_id, :video_link, :title, :description)
+    params.require(:assignment).permit(:classroom_id, :video_link, :title, :description,
+                                        questions_attributes: [:assignment_id, :prompt])
   end
 
   def authorize_teacher

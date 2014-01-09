@@ -13,7 +13,7 @@ feature 'teacher creates an assessment' do
   let(:teacher) { enrollment.classroom.user }
   let(:enrollment) { FactoryGirl.create(:enrollment) }
 
-  scenario 'teacher creates an assignment without questions' do
+  scenario 'teacher creates an assignment without questions or answers' do
     sign_in_as(teacher)
     visit root_path
     click_link 'Create Assignment'
@@ -25,8 +25,7 @@ feature 'teacher creates an assessment' do
     fill_in 'Description', with: 'Watch the videos and then answer the questions below.'
     click_button 'Create Assignment'
 
-    expect(page).to have_content('Assignment created successfully.')
-    expect(page).to have_content('Playing Sick')
+    expect(page).to have_content("can't be blank")
   end
 
   scenario 'teacher creates an assignment with questions' do
@@ -39,13 +38,15 @@ feature 'teacher creates an assessment' do
     fill_in 'Video URL', with: "http://www.youtube.com/watch?v=GEwEsdKrNcM"
     fill_in 'Title', with: 'Playing Sick'
     fill_in 'Description', with: 'Watch the videos and then answer the questions below.'
-    fill_in 'Question', match: :first, with: 'Does this work?'
+    within(".question_1"){fill_in 'Question', with: 'Does this work?'}
+    within(".question_2"){fill_in 'Question', with: 'Does this work?'}
+    within(".question_3"){fill_in 'Question', with: 'Does this work?'}
     click_button 'Create Assignment'
-    save_and_open_page
     expect(page).to have_content('Assignment created successfully.')
     expect(page).to have_content('Playing Sick')
 
     click_link('Playing Sick')
+    save_and_open_page
     expect(page).to have_content('Does this work?')
   end
 

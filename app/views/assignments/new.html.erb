@@ -6,15 +6,12 @@
   <%= f.input :video_link, label: 'Video URL' %>
   <%= f.input :title %>
   <%= f.input :description %>
-  <h1>Questions: Leave Blank if you want</h1>
-    <%= f.simple_fields_for :question do |builder| %>
-      <%= builder.input :prompt, label: 'Question #1' %>
-    <% end %>
-    <%= f.simple_fields_for :question do |builder| %>
-      <%= builder.input :prompt, label: 'Question #2' %>
-    <% end %>
-    <%= f.simple_fields_for :question do |builder| %>
-      <%= builder.input :prompt, label: 'Question #3' %>
+
+  <h1>Questions:</h1>
+    <% n = 1 %>
+    <%= f.simple_fields_for :questions do |builder| %>
+      <div class=<%="question_#{n}"%>><%= builder.input :prompt, label: "Question" %></div>
+      <% n = n + 1 %>
     <% end %>
   <%= f.button :submit %>
 <% end %>

@@ -1,5 +1,5 @@
 class Question < ActiveRecord::Base
-  validates_presence_of :assignment_id
+  validates_presence_of :assignment
   validates_presence_of :prompt
 
   belongs_to :assignment,
