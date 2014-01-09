@@ -2,8 +2,8 @@
 
 FactoryGirl.define do
   factory :option do
-    question_id 1
-    option_value "MyString"
+    question
+    option_value "Choose C."
 
   end
 end

@@ -10,9 +10,4 @@ module AuthenticationHelper
     expect(page).to_not have_content("Sign In")
     expect(page).to have_content('Edit Profile')
   end
-
-  # def create_enrollment_environment(student, teacher)
-  #   subject = FactoryGirl.create(:classroom, name: 'Biology', user_id: teacher.id)
-  #   FactoryGirl.create(:enrollment, classroom_id: subject.id, user_id: student.id)
-  # end
 end

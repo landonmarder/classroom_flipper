@@ -1,0 +1,20 @@
+<h1>View All Assignments</h1>
+
+<table class="aligncenter">
+    <thead>
+      <th>Assignment Title</th>
+      <th>Classroom</th>
+      <th>Date Created</th>
+      <th>Status</th>
+    </thead>
+    <tbody>
+      <% @assignments.each do |assignment| %>
+      <tr>
+        <td><%=link_to assignment.title, assignment%></td>
+        <td><%=assignment.classroom.name%></td>
+        <td><%=assignment.created_at.strftime('%a. %B %y')%></td>
+        <td><%=assignment.status%></td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
