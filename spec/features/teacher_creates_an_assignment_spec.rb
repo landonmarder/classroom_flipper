@@ -54,19 +54,25 @@ feature 'teacher creates an assessment' do
     fill_in 'Title', with: 'Playing Sick'
     fill_in 'Description', with: 'Watch the videos and then answer the questions below.'
     fill_in 'Question', with: 'Does this work?'
-    fill_in 'Option', with: 'The answer is A.'
-    select 1, from: 'Weight'
-    fill_in 'Option', with: 'The answer is A.'
-    fill_in 'Option', with: 'The answer is A.'
-    fill_in 'Option', with: 'The answer is A.'
+
+    options = page.all('.assignment_questions_options_option_value')
+    options.each do |option|
+      within(option) { fill_in "Option value", with: 'The answer is A' }
+    end
+
+    weights = page.all('.assignment_questions_options_weight')
+    weights.each do |weight|
+      within(weight) { select 1, from: 'Weight' }
+    end
 
     click_button 'Create Assignment'
     expect(page).to have_content('Assignment created successfully.')
     expect(page).to have_content('Playing Sick')
 
     click_link('Playing Sick')
+
     expect(page).to have_content('1. Does this work?')
-    expect(page).to have_content('The answer is A.')
+    expect(page).to have_content('The answer is A')
   end
 
   scenario 'teacher gets an error if not youtube or vimeo' do
