@@ -17,11 +17,11 @@
       <%= f.input :description %>
     </div>
 
-        <%= f.simple_fields_for :questions do |question| %>
-          <div class="links assignment-links aligncenter">
-            <%= link_to_add_association '+ Question', f, :questions %>
-          </div>
-        <% end %>
+    <%= f.simple_fields_for :questions do |question| %>
+      <div class="links assignment-links aligncenter">
+        <%= link_to_add_association '+ Question', f, :questions %>
+      </div>
+    <% end %>
 
     <div class="right-submit assignment-field">
       <%= f.button :submit, class: "assignment-submit" %>
