@@ -4,7 +4,8 @@ class AssignmentsController < ApplicationController
   def new
     @assignment = Assignment.new
     @question = @assignment.questions.build
-    @option = @question.options.build
+    4.times { @question.options.build }
+
     @classrooms = Classroom.where(user_id: current_user.id)
   end
 

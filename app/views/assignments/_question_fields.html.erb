@@ -2,9 +2,8 @@
   <%= f.input :prompt %>
   <%= f.simple_fields_for :options do |option| %>
     <div class="task_fields"><%= render 'option_fields', f: option %></div>
-    <div class="links">
-      <%= link_to_add_association 'Add Option', f, :options %>
-    </div>
-   <% end %>
-  <%= link_to_remove_association 'Remove Question', f %>
+  <% end %>
+   <div class="links">
+    <%= link_to_remove_association 'Remove Question', f %>
+  </div>
 </div>

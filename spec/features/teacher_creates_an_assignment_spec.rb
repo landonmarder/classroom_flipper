@@ -24,11 +24,10 @@ feature 'teacher creates an assessment' do
     fill_in 'Title', with: 'Playing Sick'
     fill_in 'Description', with: 'Watch the videos and then answer the questions below.'
     click_button 'Create Assignment'
-
     expect(page).to have_content("can't be blank")
   end
 
-  scenario 'teacher creates an assignment with questions' do
+  scenario 'teacher creates an assignment with a question and no answers' do
     sign_in_as(teacher)
     visit root_path
     click_link 'Create Assignment'
@@ -38,9 +37,8 @@ feature 'teacher creates an assessment' do
     fill_in 'Video URL', with: "http://www.youtube.com/watch?v=GEwEsdKrNcM"
     fill_in 'Title', with: 'Playing Sick'
     fill_in 'Description', with: 'Watch the videos and then answer the questions below.'
-    within(".question_1"){fill_in 'Question', with: 'Does this work?'}
-    within(".question_2"){fill_in 'Question', with: 'Does this work?'}
-    within(".question_3"){fill_in 'Question', with: 'Does this work?'}
+    fill_in 'Question', with: 'Does this work?'
+
     click_button 'Create Assignment'
     expect(page).to have_content("can't be blank")
   end
@@ -55,26 +53,12 @@ feature 'teacher creates an assessment' do
     fill_in 'Video URL', with: "http://www.youtube.com/watch?v=GEwEsdKrNcM"
     fill_in 'Title', with: 'Playing Sick'
     fill_in 'Description', with: 'Watch the videos and then answer the questions below.'
-    within(".question_1"){ fill_in 'Question', with: 'Does this work?' }
-    within(".question_1_option_1") { fill_in 'Option', with: 'The answer is A.' }
-    within(".question_1_option_1") { select 1, from: 'Weight'}
-    within(".question_1_option_2") { fill_in 'Option', with: 'The answer is A.' }
-    within(".question_1_option_3") { fill_in 'Option', with: 'The answer is A.' }
-    within(".question_1_option_4") { fill_in 'Option', with: 'The answer is A.' }
-
-    within(".question_2"){fill_in 'Question', with: 'Does this work?'}
-    within(".question_2_option_1") { fill_in 'Option', with: 'The answer is A.' }
-    within(".question_2_option_1") { select 1, from: 'Weight'}
-    within(".question_2_option_2") { fill_in 'Option', with: 'The answer is A.' }
-    within(".question_2_option_3") { fill_in 'Option', with: 'The answer is A.' }
-    within(".question_2_option_4") { fill_in 'Option', with: 'The answer is A.' }
-
-    within(".question_3"){fill_in 'Question', with: 'Does this work?'}
-    within(".question_3_option_1") { fill_in 'Option', with: 'The answer is A.' }
-    within(".question_3_option_1") { select 1, from: 'Weight'}
-    within(".question_3_option_2") { fill_in 'Option', with: 'The answer is A.' }
-    within(".question_3_option_3") { fill_in 'Option', with: 'The answer is A.' }
-    within(".question_3_option_4") { fill_in 'Option', with: 'The answer is A.' }
+    fill_in 'Question', with: 'Does this work?'
+    fill_in 'Option', with: 'The answer is A.'
+    select 1, from: 'Weight'
+    fill_in 'Option', with: 'The answer is A.'
+    fill_in 'Option', with: 'The answer is A.'
+    fill_in 'Option', with: 'The answer is A.'
 
     click_button 'Create Assignment'
     expect(page).to have_content('Assignment created successfully.')
