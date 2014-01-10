@@ -10,7 +10,6 @@
 
         <h3>Questions:</h3>
           <%= f.simple_fields_for :questions do |question| %>
-            <div class="task_fields"><%= render 'question_fields', f: question %></div>
             <div class="links">
               <%= link_to_add_association 'Add Question', f, :questions %>
             </div>
