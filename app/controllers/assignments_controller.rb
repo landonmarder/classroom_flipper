@@ -3,10 +3,8 @@ class AssignmentsController < ApplicationController
 
   def new
     @assignment = Assignment.new
-    3.times do
-      question = @assignment.questions.build
-      4.times { question.options.build }
-    end
+    @question = @assignment.questions.build
+    @option = @question.options.build
     @classrooms = Classroom.where(user_id: current_user.id)
   end
 
@@ -33,8 +31,8 @@ class AssignmentsController < ApplicationController
   private
   def assignment_params
     params.require(:assignment).permit(:classroom_id, :video_link, :title, :description,
-                                        questions_attributes: [:assignment_id, :prompt,
-                                          options_attributes: [:question_id, :option_value, :weight]])
+                                        questions_attributes: [:assignment_id, :prompt, :_destroy,
+                                          options_attributes: [:question_id, :option_value, :weight, :_destroy]])
   end
 
   def authorize_teacher
