@@ -1,6 +1,7 @@
 <div class="nested-fields">
   <%= f.input :option_value, label: 'Choice' %>
   <%= f.input :weight, collection: [0,1] %>
+  <%= link_to_remove_association '- Choice', f %>
   <div class="links">
   </div>
 </div>
