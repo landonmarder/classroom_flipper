@@ -1,21 +1,31 @@
 <h1 class="aligncenter">Create Assignment</h1>
-<section class="row">
-  <div class="small-12 large-8 large-offset-2 column">
-    <fieldset>
-      <%= simple_form_for(@assignment) do |f| %>
-        <%= f.input :classroom_id, collection: @classrooms, include_blank: true, label: "Classroom" %>
-        <%= f.input :video_link, label: 'Video URL' %>
-        <%= f.input :title %>
-        <%= f.input :description %>
+<div class="small-12 large-5 small-centered large-centered column" >
+  <%= simple_form_for(@assignment) do |f| %>
+    <div class="assignment-field">
+      <%= f.input :classroom_id, collection: @classrooms, include_blank: true, label: "Classroom" %>
+    </div>
 
-        <h3>Questions:</h3>
-          <%= f.simple_fields_for :questions do |question| %>
-            <div class="links">
-              <%= link_to_add_association 'Add Question', f, :questions %>
-            </div>
-          <% end %>
-        <div class="aligncenter"><%= f.button :submit%></div>
-      <% end %>
-    </fieldset>
-  </div>
-</section>
+    <div class="assignment-field">
+      <%= f.input :title %>
+    </div>
+
+    <div class="assignment-field">
+      <%= f.input :video_link, label: 'Video URL', placeholder: 'YouTube or Vimeo' %>
+    </div>
+
+    <div class="assignment-field">
+      <%= f.input :description %>
+    </div>
+
+        <%= f.simple_fields_for :questions do |question| %>
+          <div class="links assignment-links aligncenter">
+            <%= link_to_add_association '+ Question', f, :questions %>
+          </div>
+        <% end %>
+
+    <div class="right-submit assignment-field">
+      <%= f.button :submit, class: "assignment-submit" %>
+    </div>
+
+  <% end %>
+</div>
