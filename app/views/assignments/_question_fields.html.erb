@@ -1,7 +1,8 @@
 <div class="nested-fields">
   <%= f.input :prompt, label: 'Question' %>
+
   <%= f.simple_fields_for :options do |option| %>
-    <div class="task_fields"><%= render 'option_fields', f: option %></div>
+    <div class="question_fields"><%= render 'option_fields', f: option %></div>
   <% end %>
    <div class="links">
     <%= link_to_remove_association 'Remove Question', f %>
