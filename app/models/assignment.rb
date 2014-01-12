@@ -19,4 +19,15 @@ class Assignment < ActiveRecord::Base
 
   accepts_nested_attributes_for :questions
 
+  def parse_video
+    if video_link.include?('youtube')
+      parsed_id = video_link.gsub("https://www.youtube.com/watch?v=",'')
+      "//www.youtube.com/embed/" + parsed_id
+    elsif video_link.include?('vimeo')
+      parsed_id = video_link.gsub("https://vimeo.com/", '')
+      "//player.vimeo.com/video/" + parsed_id
+    else
+      'Error'
+    end
+  end
 end
