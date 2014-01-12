@@ -1,5 +1,5 @@
 <h1>Title: <%= @assignment.title %></h1>
-<p><%= @assignment.video_link %></p>
+<iframe width="420" height="315" src=<%= @assignment.parse_video %> frameborder="0" allowfullscreen></iframe>
 <h3>Description: <%= @assignment.description %></h3>
 
 
