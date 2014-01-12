@@ -32,4 +32,9 @@ describe Assignment do
     expect(assignment.parse_video).to eql("//player.vimeo.com/video/24894937")
   end
 
+  it "should give an error if not vimeo or youtube" do
+    assignment = FactoryGirl.create(:assignment, video_link: "https://www.espn.com")
+    expect(assignment.parse_video).to eql("Error")
+  end
+
 end
