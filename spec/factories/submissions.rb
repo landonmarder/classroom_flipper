@@ -2,7 +2,7 @@
 
 FactoryGirl.define do
   factory :submission do
-    enrollment_id 1
-    assignment_id 1
+    enrollment
+    assignment
   end
 end
