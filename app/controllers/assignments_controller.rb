@@ -19,9 +19,13 @@ class AssignmentsController < ApplicationController
   end
 
   def index
-    @classrooms = current_user.classrooms
+    if current_user.is_teacher?
+      @classrooms = current_user.classrooms
+    else
+      @classrooms = current_user.enrollments.map { |enrollment| enrollment.classroom }
+    end
     @assignments = @classrooms.map { |classroom| classroom.assignments }.flatten.sort_by{ |assignment| assignment.created_at }.reverse! # Move this into Assignment model
-  end
+end
 
   def show
     @assignment = Assignment.find(params[:id])

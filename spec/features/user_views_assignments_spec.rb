@@ -31,7 +31,6 @@ feature 'user views his or her assignments' do
   scenario 'student views assignments that they have to take' do
     sign_in_as(student_good)
     click_link 'View Assignments'
-
     expect(page).to have_content(assignment_good.title)
     expect(page).to have_content(assignment_good.classroom.name)
   end
