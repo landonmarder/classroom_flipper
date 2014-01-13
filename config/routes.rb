@@ -5,12 +5,12 @@ ClassroomFlipper::Application.routes.draw do
 
   get 'search' => 'classrooms#search'
   resources :classrooms
+
   resources :enrollments
-  resources :assignments do
-    resources :questions do
-      resources :options
-    end
-  end
+
+  resources :assignments
+
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
