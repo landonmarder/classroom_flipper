@@ -1,5 +1,6 @@
 class AssignmentsController < ApplicationController
   before_action :authorize_teacher, only: [:new, :create]
+  before_action :authorize_user
 
   def new
     @assignment = Assignment.new
@@ -42,6 +43,12 @@ end
   def authorize_teacher
     unless user_signed_in? and current_user.is_teacher?
       access_denied("Sorry, only teachers can access this page.")
+    end
+  end
+
+  def authorize_user
+    unless user_signed_in?
+      access_denied("Access Denied. Please sign up.")
     end
   end
 end

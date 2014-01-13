@@ -36,12 +36,25 @@ feature 'user views his or her assignments' do
   end
 
   scenario 'teacher does not see assignments from another teacher' do
+    another_teacher = FactoryGirl.create(:teacher)
+    sign_in_as(another_teacher)
+    click_link 'View Assignments'
 
+    expect(page).to_not have_content(assignment_good.title)
+    expect(page).to_not have_content(assignment_good.classroom.name)
   end
 
   scenario 'student does not see assignments for classrooms they are not enrolled in' do
+    another_student = FactoryGirl.create(:student)
+    sign_in_as(another_student)
+    click_link 'View Assignments'
+
+    expect(page).to_not have_content(assignment_good.title)
+    expect(page).to_not have_content(assignment_good.classroom.name)
   end
 
   scenario 'non authenticated user cannot access assignments' do
+    visit assignments_path
+    expect(page).to have_content("Access Denied. Please sign up.")
   end
 end
