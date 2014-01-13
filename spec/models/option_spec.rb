@@ -15,4 +15,5 @@ describe Option do
   it { should_not have_valid(:option_value).when('', nil) }
 
   it { should belong_to(:question) }
+  it { should have_many(:answers).dependent(:destroy) }
 end

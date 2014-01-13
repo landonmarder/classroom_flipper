@@ -4,4 +4,8 @@ class Option < ActiveRecord::Base
 
   belongs_to :question,
     inverse_of: :options
+
+  has_many :answers,
+    inverse_of: :option,
+    dependent: :destroy
 end
