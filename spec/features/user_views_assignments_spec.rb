@@ -10,17 +10,22 @@ feature 'user views his or her assignments' do
   # * Student has assignment name, classroom, date created, status (updated at)
   # (assignment index)
 
-  let(:student_good) { enrollment_good.user }
-  let(:teacher_good) { enrollment_good.classroom.user }
-  let(:enrollment_good) { FactoryGirl.create(:enrollment) }
+  # let(:student_good) { enrollment_good.user }
+  # let(:teacher_good) { enrollment_good.classroom.user }
+  # let(:enrollment_good) { FactoryGirl.create(:enrollment) }
+  # let(:assignment_good) { enrollment_good.classroom.assignments.first }
+
   let(:assignment_good) { FactoryGirl.create(:assignment) }
+  let(:teacher_good) { assignment_good.classroom.user }
+  let(:enrollment_good) { FactoryGirl.create(:enrollment, classroom: assignment_good.classroom) }
+  let(:student_good) { enrollment_good.user }
 
   scenario 'teacher views assignments that they created' do
     sign_in_as(teacher_good)
     click_link 'View Assignments'
-    binding.pry
+
     expect(page).to have_content(assignment_good.title)
-    expect(page).to have_content(classroom_good.name)
+    expect(page).to have_content(assignment_good.classroom.name)
   end
 
   scenario 'student views assignments that they have to take' do
@@ -28,7 +33,7 @@ feature 'user views his or her assignments' do
     click_link 'View Assignments'
 
     expect(page).to have_content(assignment_good.title)
-    expect(page).to have_content(classroom_good.name)
+    expect(page).to have_content(assignment_good.classroom.name)
   end
 
   scenario 'teacher does not see assignments from another teacher' do
