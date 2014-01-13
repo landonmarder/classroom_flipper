@@ -1,6 +1,6 @@
 class Enrollment < ActiveRecord::Base
-  validates_presence_of :user_id
-  validates_presence_of :classroom_id
+  validates_presence_of :user
+  validates_presence_of :classroom
 
   has_many :submissions,
     inverse_of: :enrollment,
@@ -13,7 +13,7 @@ class Enrollment < ActiveRecord::Base
     inverse_of: :enrollments
 
   def self.classes_for(user)
-    enrollments = Enrollment.where(user_id: user.id)
+    enrollments = Enrollment.where(user: user)
     enrollment_holder = []
     enrollments.each do |enrollment|
       enrollment_holder << Classroom.find(enrollment.classroom_id)

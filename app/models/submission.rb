@@ -1,6 +1,6 @@
 class Submission < ActiveRecord::Base
-  validates_presence_of :enrollment_id
-  validates_presence_of :assignment_id
+  validates_presence_of :enrollment
+  validates_presence_of :assignment
 
   belongs_to :enrollment,
     inverse_of: :submissions

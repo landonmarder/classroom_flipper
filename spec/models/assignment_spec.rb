@@ -1,8 +1,8 @@
 require 'spec_helper'
 
 describe Assignment do
-  it { should have_valid(:classroom_id).when(1) }
-  it { should_not have_valid(:classroom_id).when(nil) }
+  it { should have_valid(:classroom).when(Classroom.new) }
+  it { should_not have_valid(:classroom).when(nil) }
 
   it { should have_valid(:title).when("Calculate the Average") }
   it { should_not have_valid(:title).when(nil, '') }

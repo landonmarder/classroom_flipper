@@ -1,6 +1,6 @@
 class Assignment < ActiveRecord::Base
   validates_presence_of :title
-  validates_presence_of :classroom_id
+  validates_presence_of :classroom
   validates_presence_of :status
   validates_inclusion_of :status, in: ['Live', 'Closed']
   validates_presence_of :video_link
