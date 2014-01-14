@@ -1,30 +1,34 @@
 <header id="header">
-  <div class="row">
-    <nav class="top-bar">
-      <ul class="title-area">
-        <li class="name">
-        <h1><a href="/" class="logo"><i class ="fa fa-bell"></i>Classroom<span>Flipper</span></a></h1>
-        </li>
-        <li class="toggle-topbar"><a href="#"><i class="icon-reorder"></i></a></li>
-      </ul>
+<nav class="top-bar" data-topbar>
+  <ul class="title-area">
+    <li class="name">
+      <h1><a href="/" class="logo"><i class ="fa fa-bell"></i>Classroom<span>Flipper</span></a></h1>
+    </li>
+    <li class="toggle-topbar menu-icon"><a href="#">Menu</a></li>
+  </ul>
 
-      <section class="top-bar-section">
-        <ul class="right">
-          <% if user_signed_in? %>
-            <li class="set-up-options"><%= link_to 'View Assignments', assignments_path %></li>
-            <li class="set-up-options"><%= link_to 'Create Assignment', new_assignment_path if current_user.is_teacher? %></li>
-            <li class="set-up-options"><%= link_to 'Manage Classrooms', classrooms_path %></li>
-            <li class="set-up-options"><%= link_to 'Edit Profile', edit_user_registration_path %></li>
-            <li><%= link_to 'Sign Out', destroy_user_session_path, method: :delete %></li>
-          <% else %>
-            <li><%= link_to 'Sign Up', new_user_registration_path %></li>
-            <li><%= link_to 'Sign In', new_user_session_path %></li>
-          <% end %>
-          </ul>
-        <ul class="left">
-        </ul>
-      </section>
-    </nav>
-  </div>
+  <section class="top-bar-section">
+    <!-- Right Nav Section -->
+    <ul class="right">
+      <% if user_signed_in? %>
+        <% if current_user.is_teacher? %>
+          <li><a href="#" data-dropdown="drop1">My Assignments</a>
+            <ul id="drop1" class="f-dropdown" data-dropdown-content>
+              <li class="set-up-options"><%= link_to 'Create Assignment', new_assignment_path %></li>
+              <li class="set-up-options"><%= link_to 'View Assignments', assignments_path %></li>
+            </ul>
+          </li>
+        <% else %>
+          <li class="set-up-options"><%= link_to 'My Assignments', assignments_path %></li>
+        <% end %>
+        <li class="set-up-options"><%= link_to 'Manage Classrooms', classrooms_path %></li>
+        <li class="set-up-options"><%= link_to 'Edit Profile', edit_user_registration_path %></li>
+        <li><%= link_to 'Sign Out', destroy_user_session_path, method: :delete %></li>
+      <% else %>
+        <li><%= link_to 'Sign Up', new_user_registration_path %></li>
+        <li><%= link_to 'Sign In', new_user_session_path %></li>
+      <% end %>
+    </ul>
+  </section>
+</nav>
 </header>
-

@@ -14,7 +14,6 @@
 //= require jquery_ujs
 //= require cocoon
 //= require foundation
-//= require turbolinks
 //= require_tree .
 
 $(function(){
