@@ -30,7 +30,7 @@ feature 'user views his or her assignments' do
 
   scenario 'student views assignments that they have to take' do
     sign_in_as(student_good)
-    click_link 'View Assignments'
+    click_link 'My Assignments'
     expect(page).to have_content(assignment_good.title)
     expect(page).to have_content(assignment_good.classroom.name)
   end
@@ -47,7 +47,7 @@ feature 'user views his or her assignments' do
   scenario 'student does not see assignments for classrooms they are not enrolled in' do
     another_student = FactoryGirl.create(:student)
     sign_in_as(another_student)
-    click_link 'View Assignments'
+    click_link 'My Assignments'
 
     expect(page).to_not have_content(assignment_good.title)
     expect(page).to_not have_content(assignment_good.classroom.name)
