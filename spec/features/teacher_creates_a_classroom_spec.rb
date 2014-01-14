@@ -18,7 +18,7 @@ feature 'teacher creates a classroom' do
     click_link 'Manage Classrooms'
     expect(page).to have_content 'Manage Your Classrooms'
 
-    click_link 'Create Classroom'
+    click_link 'Add a Classroom'
     fill_in 'Name', with: '6th Math Problem Solving'
     fill_in 'Description', with: "Ms.TeacherLast's Classroom at Birth Elementary School"
     click_button 'Create Classroom'
@@ -33,7 +33,7 @@ feature 'teacher creates a classroom' do
     click_link 'Manage Classrooms'
     expect(page).to have_content 'Manage Your Classrooms'
 
-    click_link 'Create Classroom'
+    click_link 'Add a Classroom'
     fill_in 'Name', with: ''
     click_button 'Create Classroom'
 

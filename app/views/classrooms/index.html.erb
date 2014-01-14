@@ -1,8 +1,7 @@
-<h1 class="aligncenter">Manage Your Classrooms</h1>
-
 <% if current_user.is_teacher? %>
+<h1 class="aligncenter">Manage Your Classrooms</h1>
   <p>You have <%= pluralize(@classrooms.length, "classroom")%>.</p>
-  <table class="aligncenter">
+  <table>
     <thead>
       <th>Class Name</th>
       <th>Description</th>
@@ -19,12 +18,35 @@
       <% end %>
     </tbody>
   </table>
-  <h4><%= link_to 'Create Classroom', new_classroom_path%></h4>
+  <br>
+  <a href="#" class="button aligncenter" id="classroom-button">Add a Classroom</a>
+  <div id="create-classroom">
+    <section class="row"  id="signup">
+      <div class="small-12 large-4 small-centered large-centered column">
+        <h3 class="aligncenter title">Create a Classroom</h3>
+          <fieldset>
+            <%= simple_form_for(@classroom) do |f| %>
+                <div class="clearfix input">
+                  <%= f.input :name %>
+                </div>
+
+                <div class="clearfix input">
+                  <%= f.input :description %>
+                </div>
+
+                <div class="clearfix input aligncenter">
+                  <%= f.button :submit, 'Create Classroom' %>
+                </div>
+              <% end %>
+            </fieldset>
+      </div>
+    </section>
+  </div>
 
 <% else %>
-  <h1>My Classes</h1>
-  <p>You are enrolled in <%= pluralize(@student_enrollments.length, "classroom")%>.</p>
-  <table class="aligncenter">
+  <h1 class="aligncenter">My Classes</h1>
+  <p class="aligncenter">You are enrolled in <%= pluralize(@student_enrollments.length, "classroom")%>.</p>
+  <table>
     <thead>
       <td>Name</td>
       <td>Description</td>
@@ -41,38 +63,38 @@
     </tbody>
   </table>
   <br>
-  <h1>Enroll in a Classroom</h1>
-  <%= search_form_for @search do |f| %>
-    <div class="field small-4 columns">
-      <%= f.label :name_cont, "Classroom Name" %>
-      <%= f.text_field :name_cont %>
-    </div>
-    <div class="actions"><%= f.submit "Search"%></div>
-  <% end %>
-
-  <table class="aligncenter" id="search-results">
-    <thead>
-      <th>Class Name</th>
-      <th>Description</th>
-      <th>Teacher</th>
-      <th>Enroll</th>
-    </thead>
-    <tbody>
+  <a href="#" class="button aligncenter" id="enrollment-button">Enroll in a Classroom</a>
+  <div id="enroll">
+    <%= search_form_for @search do |f| %>
+      <div class="field small-4 columns">
+        <%= f.label :name_cont, "Classroom Name" %>
+        <%= f.text_field :name_cont %>
+      </div>
+      <div class="actions"><%= f.submit "Search"%></div>
+    <% end %>
+    <table id="search-results">
+      <thead>
+        <th>Class Name</th>
+        <th>Description</th>
+        <th>Teacher</th>
+        <th>Enroll</th>
+      </thead>
+      <tbody>
         <% @classrooms.each do |classroom| %>
-        <tr id='classroom_<%= classroom.id %>'>
-          <td><%=classroom.name%></td>
-          <td><%=classroom.description%></td>
-          <td><%=classroom.user.professional_name %></td>
-          <td>
-            <% if classroom.enrolled?(current_user) %>
-            Enrolled
-            <% else %>
-            <%= button_to '+', enrollments_path(classroom_id: classroom.id) %>
-            <% end %>
-          </td>
-        </tr>
+          <tr id='classroom_<%= classroom.id %>'>
+            <td><%=classroom.name%></td>
+            <td><%=classroom.description%></td>
+            <td><%=classroom.user.professional_name %></td>
+            <td>
+              <% if classroom.enrolled?(current_user) %>
+              Enrolled
+              <% else %>
+              <%= button_to '+', enrollments_path(classroom_id: classroom.id) %>
+              <% end %>
+            </td>
+          </tr>
         <% end %>
-    </tbody>
-  </table>
-
+      </tbody>
+    </table>
+  </div>
 <% end %>

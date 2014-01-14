@@ -17,6 +17,19 @@
 //= require_tree .
 
 $(function(){
+  $('#enrollment-button').on('click', function(){
+    $("#enroll").toggle();
+  });
+});
+
+$(function(){
+  $('#classroom-button').on('click', function(){
+    $("#create-classroom").toggle();
+  });
+});
+
+
+$(function(){
   $('#classroom_search').on('submit', function(e) {
     e.preventDefault();
     console.log(e);
@@ -58,7 +71,5 @@ $(function(){
 
 
   $(document).foundation();
-
-
 
 });
