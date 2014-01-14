@@ -1,20 +1,20 @@
-<h1>Title: <%= @assignment.title %></h1>
-<iframe width="420" height="315" src=<%= @assignment.parse_video %> frameborder="0" allowfullscreen></iframe>
-
-<h3>Description: <%= @assignment.description %></h3>
-
-
-<% @assignment.questions.each do |question| %>
-  <div>
-    <%= @question_number %>. <%= question.prompt %>
-      <% @question_number = @question_number + 1 %>
-      <% question.options.each do |option| %>
-      <%= option.option_value %>
-    <% end %>
+<section class="row">
+  <div class="small-12 large-8 small-centered large-centered column aligncenter">
+    <h1 id="video-title"><%= @assignment.title %></h1>
+    <iframe width="560" height="315" src=<%= @assignment.parse_video %> frameborder="0" allowfullscreen></iframe>
+    <h5>Description: <%= @assignment.description %></h5>
+    <%= link_to 'View Questions', '#', class:"button" %>
+    <%= link_to 'Analyze Results By Question', '#', class:"button" %>
+    <%= link_to 'Analyze Results By Student', '#', class:"button" %>
   </div>
-<% end %>
 
-<div>Status: <%= @assignment.status %></div>
-
-<%= link_to 'Close Video', '#' %>
-<%= link_to 'Analyze Results', '#' %>
+  <% @assignment.questions.each do |question| %>
+    <div class="small-12 large-8 small-centered large-centered column question-video">
+      <%= @question_number %>. <%= question.prompt %>
+        <% @question_number = @question_number + 1 %>
+        <% question.options.each do |option| %>
+          <div class="option-choice"><%= option.option_value %></div>
+        <% end %>
+    </div>
+  <% end %>
+</section>

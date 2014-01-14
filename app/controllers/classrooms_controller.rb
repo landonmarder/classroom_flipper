@@ -2,6 +2,10 @@ class ClassroomsController < ApplicationController
   before_action :authorize_teacher, only: [:create, :new, :update, :show]
   respond_to :html, :json, :js
 
+  def new
+    @classroom = Classroom.new
+  end
+
   def create
     @classroom = current_user.classrooms.build(classroom_params)
 
