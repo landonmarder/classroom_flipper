@@ -12,10 +12,10 @@ class SubmissionsController < ApplicationController
     @submission.enrollment = @enrollment
 
     if @submission.save
-      flash[:notice] = 'Thank you for completing your assignment!'
       redirect_to assignments_path
+      flash[:notice] = 'Thank you for completing your assignment!'
     else
-      flash[:alert] = 'you should drop out'
+      flash[:alert] = 'You need to answer all questions'
       render :new
     end
   end

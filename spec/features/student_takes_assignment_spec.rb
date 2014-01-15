@@ -32,10 +32,9 @@ feature 'student takes an assignment' do
     click_link 'My Assignments'
     click_link assignment.title
 
-    choices = page.all('.question-video')
-
-    choices.each do |choice|
-      within(choice) { select 'Choose C.', from: 'Options' }
+    question_block = page.all('.question-video')
+    question_block.each do |question|
+    within(question) { select 'Choose C.' }
     end
 
     click_button 'Submit'
