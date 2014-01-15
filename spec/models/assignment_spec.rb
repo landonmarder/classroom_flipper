@@ -37,4 +37,7 @@ describe Assignment do
     expect(assignment.parse_video).to eql("Error")
   end
 
+  it "should have a hash that holds option name and number of people that selected that option" do
+  end
+
 end
