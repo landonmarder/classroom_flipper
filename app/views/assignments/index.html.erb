@@ -11,8 +11,14 @@
     <tbody>
       <% @assignments.each do |assignment| %>
       <tr>
-        <td><%=link_to assignment.title, assignment%></td>
-        <td><%=assignment.classroom.name%></td>
+        <td>
+          <% if current_user.is_teacher? %>
+            <%= link_to assignment.title, assignment%>
+          <% else %>
+            <%= link_to assignment.title, new_assignment_submission_path(assignment) %>
+          <% end %>
+        </td>
+        <td><%= assignment.classroom.name%></td>
         <td><%=assignment.created_at.strftime('%a. %B %d')%></td>
         <td><%=assignment.status%></td>
       </tr>

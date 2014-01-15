@@ -11,4 +11,6 @@ class Submission < ActiveRecord::Base
   has_many :answers,
     inverse_of: :submission,
     dependent: :destroy
+
+  accepts_nested_attributes_for :answers
 end

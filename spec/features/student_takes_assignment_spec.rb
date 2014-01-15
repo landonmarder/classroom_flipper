@@ -14,14 +14,25 @@ feature 'student takes an assignment' do
   # * I must not be able to access an assignment that I have already finished
 
   let(:question) { FactoryGirl.create(:question) }
-  let(:option_correct) { FactoryGirl.create(:option, question: question, weight: 1) }
-  let(:option_incorrect) { FactoryGirl.create(:option, question: question, option_value: 'Incorrect') }
+  let!(:option_correct) { FactoryGirl.create(:option, question: question, weight: 1) }
+  let!(:option_incorrect) { FactoryGirl.create(:option, question: question, option_value: 'Incorrect') }
   let(:assignment) { question.assignment }
   let(:teacher) { assignment.classroom.user }
   let(:enrollment) { FactoryGirl.create(:enrollment, classroom: assignment.classroom) }
   let(:student) { enrollment.user }
 
   scenario 'student takes an assignment everything works' do
-    binding.pry
+    submission_count = Submission.all.count
+    answer_count = Answer.all.count
+    sign_in_as(student)
+    click_link 'My Assignments'
+    click_link assignment.title
+
+    select option_correct.option_value, from: 'Options'
+    click_button 'Submit'
+    expect(page).to have_content("View All Assignments")
+    expect(page).to have_content("Thank you for completing your assignment!")
+    expect(Submission.all.count).to eql(submission_count + 1)
+    expect(Answer.all.count).to eql(answer_count + 1)
   end
 end

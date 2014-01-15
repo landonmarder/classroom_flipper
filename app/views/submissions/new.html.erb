@@ -1,0 +1,21 @@
+<%= simple_form_for(@submission) do |f| %>
+  <section class="row">
+    <div class="small-12 large-8 small-centered large-centered column aligncenter">
+      <h1 id="video-title"><%= @assignment.title %></h1>
+      <iframe width="560" height="315" src=<%= @assignment.parse_video %> frameborder="0" allowfullscreen></iframe>
+      <h5>Description: <%= @assignment.description %></h5>
+    </div>
+
+    <% @assignment.questions.each do |question| %>
+      <div class="small-12 large-8 small-centered large-centered column question-video">
+        <%= @question_number %>. <%= question.prompt %>
+          <% @question_number = @question_number + 1 %>
+          <%= simple_fields_for @answer do |answer| %>
+            <% answer.input :option_id, collection: question.options, label_method: :option_value, value_method: :id, label: "Options", include_blank: true %>
+          <% end %>
+      </div>
+    <% end %>
+  </section>
+  <%= f.button :submit, 'Submit' %>
+<% end %>
+

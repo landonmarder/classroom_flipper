@@ -8,7 +8,13 @@ ClassroomFlipper::Application.routes.draw do
 
   resources :enrollments
 
-  resources :assignments
+  resources :assignments do
+    resources :submissions
+  end
+
+  resources :submissions do
+    resources :answers
+  end
 
 
   # The priority is based upon order of creation: first created -> highest priority.
