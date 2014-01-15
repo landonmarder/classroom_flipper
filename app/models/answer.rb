@@ -11,4 +11,12 @@ class Answer < ActiveRecord::Base
 
   belongs_to :option,
     inverse_of: :answers
+
+  def choices
+    question.options
+  end
+
+  def option_value
+    question.option_value
+  end
 end
