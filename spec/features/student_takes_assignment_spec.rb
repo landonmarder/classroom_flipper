@@ -44,7 +44,6 @@ feature 'student takes an assignment' do
     expect(Answer.all.count).to eql(answer_count + 2)
   end
 
-
   scenario 'student tries to answer an assignment, does not fill in all answers' do
     sign_in_as(student)
     click_link 'My Assignments'
@@ -54,5 +53,7 @@ feature 'student takes an assignment' do
     expect(page).to have_content("You need to answer all questions")
     expect(page).to_not have_content("View All Assignments")
   end
+
+  scenario 'what to do with student retaking assignment?'
 end
 
