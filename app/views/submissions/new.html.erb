@@ -1,4 +1,4 @@
-<%= simple_form_for(@submission) do |f| %>
+<%= simple_form_for([@assignment, @submission]) do |f| %>
   <section class="row">
     <div class="small-12 large-8 small-centered large-centered column aligncenter">
       <h1 id="video-title"><%= @assignment.title %></h1>
@@ -18,4 +18,3 @@
   </section>
   <%= f.button :submit, 'Submit' %>
 <% end %>
-
