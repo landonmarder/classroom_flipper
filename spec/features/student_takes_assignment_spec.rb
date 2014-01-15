@@ -45,5 +45,14 @@ feature 'student takes an assignment' do
   end
 
 
-  scenario 'student tries to take an assignment more than once?'
+  scenario 'student tries to answer an assignment, does not fill in all answers' do
+    sign_in_as(student)
+    click_link 'My Assignments'
+    click_link assignment.title
+
+    click_button 'Submit'
+    expect(page).to have_content("You need to answer all questions")
+    expect(page).to_not have_content("View All Assignments")
+  end
 end
+
