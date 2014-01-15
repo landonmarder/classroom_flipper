@@ -21,7 +21,7 @@ feature 'student takes an assignment' do
   let(:enrollment) { FactoryGirl.create(:enrollment, classroom: assignment.classroom) }
   let(:student) { enrollment.user }
 
-  scenario 'student takes an assignment everything works' do
+  scenario 'student takes an assignment one question' do
     submission_count = Submission.all.count
     answer_count = Answer.all.count
     sign_in_as(student)
@@ -35,4 +35,31 @@ feature 'student takes an assignment' do
     expect(Submission.all.count).to eql(submission_count + 1)
     expect(Answer.all.count).to eql(answer_count + 1)
   end
+
+  scenario 'student takes an assignment two questions' do
+    question_two = FactoryGirl.create(:question, assignment_id: assignment.id)
+    option_correct = FactoryGirl.create(:option, question: question_two, weight: 1)
+    option_incorrect = FactoryGirl.create(:option, question: question_two, option_value: 'Incorrect')
+
+    submission_count = Submission.all.count
+    answer_count = Answer.all.count
+    sign_in_as(student)
+    click_link 'My Assignments'
+    click_link assignment.title
+
+    choices = page.all('.question-video')
+
+    choices.each do |choice|
+      within(choice) { select 'Choose C.', from: 'Options' }
+    end
+
+    click_button 'Submit'
+    expect(page).to have_content("View All Assignments")
+    expect(page).to have_content("Thank you for completing your assignment!")
+    expect(Submission.all.count).to eql(submission_count + 1)
+    expect(Answer.all.count).to eql(answer_count + 2)
+  end
+
+
+  scenario 'student tries to take an assignment more than once'
 end
