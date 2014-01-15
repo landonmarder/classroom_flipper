@@ -10,8 +10,8 @@ class SubmissionsController < ApplicationController
   def create
     @assignment = Assignment.find(params[:assignment_id])
     @enrollment = @assignment.classroom.enrollments.find_by(user: current_user)
-    @submission = Submission.new
 
+    @submission = Submission.new
     @submission.enrollment_id = @enrollment.id
     @submission.assignment_id = @assignment.id
 
@@ -22,9 +22,9 @@ class SubmissionsController < ApplicationController
     end
   end
 
-
   private
-  def submission_params
-    params.require(:submission).permit(answer_attributes: [:option_id, :submission_id, :question_id])
+  def answer_params
+    binding.pry
+    params.require(:submission).permit(answer_attributes: [:id, :option_id, :question_id])
   end
 end

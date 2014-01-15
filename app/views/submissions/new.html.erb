@@ -11,7 +11,8 @@
         <%= @question_number %>. <%= question.prompt %>
           <% @question_number = @question_number + 1 %>
           <%= simple_fields_for @answer do |answer| %>
-            <% answer.input :option_id, collection: question.options, label_method: :option_value, value_method: :id, label: "Options", include_blank: true %>
+            <%= answer.input :option_id, collection: question.options, label_method: :option_value, value_method: :id, label: "Options", include_blank: true %>
+            <%= answer.hidden_field :question_id, value: question.id %>
           <% end %>
       </div>
     <% end %>
