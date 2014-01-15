@@ -3,18 +3,24 @@
     <h1 id="video-title"><%= @assignment.title %></h1>
     <iframe width="560" height="315" src=<%= @assignment.parse_video %> frameborder="0" allowfullscreen></iframe>
     <h5>Description: <%= @assignment.description %></h5>
-    <%= link_to 'View Questions', '#', class:"button" %>
-    <%= link_to 'Analyze Results By Question', '#', class:"button" %>
-    <%= link_to 'Analyze Results By Student', '#', class:"button" %>
+    <%= link_to 'View Questions', '#', class: "button", id: "analytic-button-question" %>
+    <%= link_to 'Analyze Results By Question', '#', class: "button", id: "analytic-button-pie" %>
+    <%= link_to 'Analyze Results By Student', '#', class: "button", id: "analytic-button-bar" %>
+  </div>
+  <% @assignment.questions.each do |question| %>
+      <div class="small-12 large-8 small-centered large-centered column question-video">
+        <%= @question_number %>. <%= question.prompt %>
+          <% @question_number = @question_number + 1 %>
+          <% question.options.each do |option| %>
+            <div class="option-choice"><%= option.option_value %></div>
+          <% end %>
+      </div>
+    <% end %>
+  <div class="small-12 large-8 small-centered large-centered column" id="pie-charts">
+    Pie Charts will go here
   </div>
 
-  <% @assignment.questions.each do |question| %>
-    <div class="small-12 large-8 small-centered large-centered column question-video">
-      <%= @question_number %>. <%= question.prompt %>
-        <% @question_number = @question_number + 1 %>
-        <% question.options.each do |option| %>
-          <div class="option-choice"><%= option.option_value %></div>
-        <% end %>
-    </div>
-  <% end %>
+  <div class="small-12 large-8 small-centered large-centered column" id="student-charts">
+    Student Bar Graph will go here
+  </div>
 </section>

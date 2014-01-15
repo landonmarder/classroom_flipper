@@ -24,10 +24,33 @@ $(function(){
 
 $(function(){
   $('#classroom-button').on('click', function(){
-    $("#create-classroom").toggle();
+    $("#create-classroom").toggle("slow");
   });
 });
 
+$(function(){
+  $('#analytic-button-question').on('click', function(){
+    $(".question-video").css("display", "block");
+    $("#pie-charts").css("display", "none");
+    $("#student-charts").css("display", "none");
+  });
+});
+
+$(function(){
+  $('#analytic-button-pie').on('click', function(){
+    $(".question-video").css("display", "none");
+    $("#pie-charts").css("display", "block");
+    $("#student-charts").css("display", "none");
+  });
+});
+
+$(function(){
+  $('#analytic-button-bar').on('click', function(){
+    $(".question-video").css("display", "none");
+    $("#pie-charts").css("display", "none");
+    $("#student-charts").css("display", "block");
+  });
+});
 
 $(function(){
   $('#classroom_search').on('submit', function(e) {
