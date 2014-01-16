@@ -32,12 +32,13 @@ feature 'student takes an assignment' do
     click_link 'My Assignments'
     click_link assignment.title
 
-    question_block = page.all('.question-video')
+    question_block = page.all('.question-submission')
     question_block.each do |question|
-    within(question) { select 'Choose C.' }
+      within(question) { select 'Choose C.' }
     end
 
     click_button 'Submit'
+    save_and_open_page
     expect(page).to have_content("View All Assignments")
     expect(page).to have_content("Thank you for completing your assignment!")
     expect(Submission.all.count).to eql(submission_count + 1)
