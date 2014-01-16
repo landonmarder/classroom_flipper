@@ -21,12 +21,12 @@ describe Question do
     expect(question.answers_per_option).to eql({ "#{option_correct.option_value}" => 1, "#{option_incorrect.option_value}" => 1 })
   end
 
-  it "should tell which answer is the correct answer" do
+  it "should tell which answer is the correct option" do
     question = FactoryGirl.create(:question)
     option_correct = FactoryGirl.create(:option, question: question, weight: 1)
     option_incorrect = FactoryGirl.create(:option, question: question, option_value: 'Incorrect')
-    expect(question.correct_answer).to eql(option_correct)
-    expect(question.correct_answer).to_not eql(option_incorrect)
+    expect(question.correct_option).to eq([option_correct])
+    expect(question.correct_option).to_not eq([option_incorrect])
   end
 
 end

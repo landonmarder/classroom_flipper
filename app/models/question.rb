@@ -22,4 +22,8 @@ class Question < ActiveRecord::Base
     end
     all_answers
   end
+
+  def correct_option
+    options.where(weight: 1)
+  end
 end
