@@ -28,6 +28,7 @@ $(function(){
   });
 });
 
+
 $(function(){
   $('#analytic-button-question').on('click', function(){
     $(".question-video").css("display", "block");
