@@ -17,7 +17,11 @@
       </div>
     <% end %>
   <div class="small-12 large-8 small-centered large-centered column" id="pie-charts">
-    <%= pie_chart({"Football" => 10, "Basketball" => 5}) %>
+    <% @assignment.questions.each do |question| %>
+      <%= question.prompt %>
+      <%= pie_chart(question.answers_per_option) %>
+      Correct Answer: NEED TO DO
+    <% end %>
   </div>
 
   <div class="small-12 large-8 small-centered large-centered column" id="student-charts">
