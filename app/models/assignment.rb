@@ -30,4 +30,14 @@ class Assignment < ActiveRecord::Base
       'Error'
     end
   end
+
+  def student_results
+    results = Hash.new(0)
+    submissions.each do |submission|
+      submission.answers.each do |answer|
+        results[submission.enrollment.user.full_name] += answer.option.weight
+      end
+    end
+    results
+  end
 end
