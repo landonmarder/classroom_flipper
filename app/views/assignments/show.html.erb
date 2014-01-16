@@ -20,7 +20,8 @@
     <% @assignment.questions.each do |question| %>
       <%= question.prompt %>
       <%= pie_chart(question.answers_per_option) %>
-      Correct Answer: NEED TO DO
+      Correct Answer(s):
+      <%= question.display_correct_option %>
     <% end %>
   </div>
 

@@ -26,4 +26,16 @@ class Question < ActiveRecord::Base
   def correct_option
     options.where(weight: 1)
   end
+
+  def display_correct_option
+    final = ""
+    correct_option.each do |option|
+      if final.empty?
+        final = option.option_value
+      else
+        final = final + ", #{option.option_value}"
+      end
+    end
+    final
+  end
 end

@@ -29,4 +29,12 @@ describe Question do
     expect(question.correct_option).to_not eq([option_incorrect])
   end
 
+  it "should display the answer names that are correct" do
+    question = FactoryGirl.create(:question)
+    option_correct = FactoryGirl.create(:option, question: question, weight: 1)
+    option_incorrect = FactoryGirl.create(:option, question: question, weight: 1, option_value: 'Incorrect')
+
+    expect(question.display_correct_option).to eq("Choose C., Incorrect")
+  end
+
 end
