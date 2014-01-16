@@ -7,24 +7,36 @@
 </div>
 
 
-<div class="small-12 large-10 small-centered column question-video">
-<section class="row">
+<div class="row question-video">
   <h3>Analyze Results By Question</h3>
-  <% @assignment.questions.each do |question| %>
-    <div id="question-and-pie" class="large-6">
-      <div id="question-info"><%= @question_number %>. <%= question.prompt %>
-      Correct Answer(s):
-      <%= question.display_correct_option %></div>
-      <% @question_number = @question_number + 1 %>
-      <%= pie_chart(question.answers_per_option)  %>
+    <% @assignment.questions.each do |question| %>
+      <div class="large-7 columns">
+        <div class="panel">
+          <div id="question-info">
+            <h5><%= @question_number %>. <%= question.prompt %></h5>
+          </div>
+          <% @question_number = @question_number + 1 %>
+          <%= pie_chart(question.answers_per_option)  %>
+      </div>
     </div>
 
-  <% end %>
-  </section>
+    <div class="large-5 columns">
+      <div class="panel">
+        <h4>Options:</h4>
+        <% question.options.each do |option| %>
+          <li><%= option.option_value %></li>
+        <% end %>
+        <br>
+        Correct Answer(s):
+        <%= question.display_correct_option %>
+        </div>
+      </div>
+      <% end %>
 </div>
 
-
-<div class="small-12 large-10 small-centered large-centered column" id="student-charts">
-<h3>Total Points Scored</h3>
-<%= bar_chart(@assignment.student_results) %>
+<div class="row" id="student-charts">
+  <h3>Total Points Scored</h3>
+  <div class="panel">
+    <%= bar_chart(@assignment.student_results) %>
+  </div>
 </div>
