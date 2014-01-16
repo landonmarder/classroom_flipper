@@ -1,27 +1,30 @@
+<div class="small-12 large-8 small-centered large-centered column aligncenter">
+  <h1 id="video-title"><%= @assignment.title %></h1>
+  <iframe width="560" height="315" src=<%= @assignment.parse_video %> frameborder="0" allowfullscreen></iframe>
+  <h5>Description: <%= @assignment.description %></h5>
+  <%= link_to 'Analyze Results By Question', '#', class: "button", id: "analytic-button-question" %>
+  <%= link_to 'Analyze Results By Student', '#', class: "button", id: "analytic-button-bar" %>
+</div>
+
+
+<div class="small-12 large-10 small-centered column question-video">
 <section class="row">
-  <div class="small-12 large-8 small-centered large-centered column aligncenter">
-    <h1 id="video-title"><%= @assignment.title %></h1>
-    <iframe width="560" height="315" src=<%= @assignment.parse_video %> frameborder="0" allowfullscreen></iframe>
-    <h5>Description: <%= @assignment.description %></h5>
-    <%= link_to 'Analyze Results By Question', '#', class: "button", id: "analytic-button-question" %>
-    <%= link_to 'Analyze Results By Student', '#', class: "button", id: "analytic-button-bar" %>
-  </div>
+  <h3>Analyze Results By Question</h3>
+  <% @assignment.questions.each do |question| %>
+    <div id="question-and-pie" class="large-6">
+      <div id="question-info"><%= @question_number %>. <%= question.prompt %>
+      Correct Answer(s):
+      <%= question.display_correct_option %></div>
+      <% @question_number = @question_number + 1 %>
+      <%= pie_chart(question.answers_per_option)  %>
+    </div>
 
-  <div class="small-12 large-10 small-centered large-centered column question-video">
-    <h3>Analyze Results By Question</h3>
-    <% @assignment.questions.each do |question| %>
-      <div id="question-and-pie large-4 column">
-        <%= @question_number %>. <%= question.prompt %>
-        <% @question_number = @question_number + 1 %>
-        <%= pie_chart(question.answers_per_option)  %>
-        Correct Answer(s):
-        <%= question.display_correct_option %>
-      </div>
-    <% end %>
-  </div>
+  <% end %>
+  </section>
+</div>
 
-  <div class="small-12 large-10 small-centered large-centered column" id="student-charts">
-  <h3>Total Points Scored</h3>
-  <%= bar_chart(@assignment.student_results) %>
-  </div>
-</section>
+
+<div class="small-12 large-10 small-centered large-centered column" id="student-charts">
+<h3>Total Points Scored</h3>
+<%= bar_chart(@assignment.student_results) %>
+</div>
