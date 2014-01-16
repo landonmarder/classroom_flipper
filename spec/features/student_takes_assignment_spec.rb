@@ -22,26 +22,12 @@ feature 'student takes an assignment' do
   let(:student) { enrollment.user }
 
   scenario 'student takes an assignment two questions' do
-    question_two = FactoryGirl.create(:question, assignment_id: assignment.id)
-    option_correct = FactoryGirl.create(:option, question: question_two, weight: 1)
-    option_incorrect = FactoryGirl.create(:option, question: question_two, option_value: 'Incorrect')
+    student_takes_assignment
 
-    submission_count = Submission.all.count
-    answer_count = Answer.all.count
-    sign_in_as(student)
-    click_link 'My Assignments'
+    # Am I putting too much into this test, move the top into a helper method and move the below to a third test?
     click_link assignment.title
-
-    question_block = page.all('.question-submission')
-    question_block.each do |question|
-      within(question) { select 'Choose C.' }
-    end
-
     click_button 'Submit'
-    expect(page).to have_content("View All Assignments")
-    expect(page).to have_content("Thank you for completing your assignment!")
-    expect(Submission.all.count).to eql(submission_count + 1)
-    expect(Answer.all.count).to eql(answer_count + 2)
+    expect(page).to have_content('You have already submitted this assignment')
   end
 
   scenario 'student tries to answer an assignment, does not fill in all answers' do
@@ -53,7 +39,5 @@ feature 'student takes an assignment' do
     expect(page).to have_content("You need to answer all questions")
     expect(page).to_not have_content("View All Assignments")
   end
-
-  scenario 'what to do with student retaking assignment?'
 end
 

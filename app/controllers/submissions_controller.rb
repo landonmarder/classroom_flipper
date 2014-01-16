@@ -15,8 +15,13 @@ class SubmissionsController < ApplicationController
       redirect_to assignments_path
       flash[:notice] = 'Thank you for completing your assignment!'
     else
-      flash[:alert] = 'You need to answer all questions'
-      render :new
+      if @submission.errors.messages.include?(:enrollment_id)
+        flash[:alert] = 'You have already submitted this assignment. Feel free to review.'
+        render :new
+      else
+        flash[:alert] = 'You need to answer all questions.'
+        render :new
+      end
     end
   end
 
