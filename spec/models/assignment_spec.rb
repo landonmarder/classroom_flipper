@@ -48,6 +48,6 @@ describe Assignment do
     option_incorrect = FactoryGirl.create(:option, question: question_two, weight: 0)
     answer_two = FactoryGirl.create(:answer, option: option_incorrect, question: question_two, submission: submission)
 
-    expect(assignment.student_results).to eq( { "Kobe Bryant" => 1 } )
+    expect(assignment.student_results).to eq( [["Kobe Bryant", 1]] )
   end
 end

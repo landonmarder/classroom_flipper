@@ -38,6 +38,6 @@ class Assignment < ActiveRecord::Base
         results[submission.enrollment.user.full_name] += answer.option.weight
       end
     end
-    results
+    results.sort_by{ |k,v| -v }
   end
 end
