@@ -30,14 +30,14 @@ $(function(){
 
 $(function(){
   $('#analytic-button-question').on('click', function(){
-    $(".question-video").css("display", "block");
+    $("#question-video").css("display", "block");
     $("#student-charts").css("display", "none");
   });
 });
 
 $(function(){
   $('#analytic-button-bar').on('click', function(){
-    $(".question-video").css("display", "none");
+    $("#question-video").css("display", "none");
     $("#student-charts").css("display", "block");
   });
 });
