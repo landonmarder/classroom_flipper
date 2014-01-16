@@ -13,7 +13,7 @@
       <div class="large-7 columns">
         <div class="panel">
           <div id="question-info">
-            <h5><%= @question_number %>. <%= question.prompt %></h5>
+            <h4><%= @question_number %>. <%= question.prompt %></h4>
           </div>
           <% @question_number = @question_number + 1 %>
           <%= pie_chart(question.answers_per_option)  %>
