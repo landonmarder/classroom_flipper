@@ -18,10 +18,12 @@
     <% end %>
   <div class="small-12 large-8 small-centered large-centered column" id="pie-charts">
     <% @assignment.questions.each do |question| %>
-      <%= question.prompt %>
-      <%= pie_chart(question.answers_per_option) %>
-      Correct Answer(s):
-      <%= question.display_correct_option %>
+      <div>
+        <%= question.prompt %>
+        <%= pie_chart(question.answers_per_option) %>
+        Correct Answer(s):
+        <%= question.display_correct_option %>
+      </div>
     <% end %>
   </div>
 
