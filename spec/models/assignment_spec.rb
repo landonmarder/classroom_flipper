@@ -36,4 +36,18 @@ describe Assignment do
     assignment = FactoryGirl.create(:assignment, video_link: "https://www.espn.com")
     expect(assignment.parse_video).to eql("Error")
   end
+
+  it "should give scores for all students that take the assignment" do
+    assignment = FactoryGirl.create(:assignment)
+    submission = FactoryGirl.create(:submission, assignment: assignment)
+    question_one = FactoryGirl.create(:question)
+    option_correct = FactoryGirl.create(:option, question: question_one, weight: 1)
+    answer_one = FactoryGirl.create(:answer, option: option_correct, question: question_one, submission: submission)
+
+    question_two = FactoryGirl.create(:question)
+    option_incorrect = FactoryGirl.create(:option, question: question_two, weight: 0)
+    answer_two = FactoryGirl.create(:answer, option: option_incorrect, question: question_two, submission: submission)
+
+    expect(submission.student_results).to eq( { "Kobe Bryant" => 1 } )
+  end
 end

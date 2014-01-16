@@ -17,6 +17,7 @@
       </div>
     <% end %>
   <div class="small-12 large-8 small-centered large-centered column" id="pie-charts">
+    <h3>Question Breakdown</h3>
     <% @assignment.questions.each do |question| %>
       <div>
         <%= question.prompt %>
@@ -28,6 +29,7 @@
   </div>
 
   <div class="small-12 large-8 small-centered large-centered column" id="student-charts">
-    Student Bar Graph will go here
+  <h3>Total Points Scored</h3>
+  <%= bar_chart(landon: 1, billy: 2) %>
   </div>
 </section>
