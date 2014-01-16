@@ -1,5 +1,5 @@
 <div class="small-12 large-8 small-centered large-centered column aligncenter">
-  <h1 id="video-title"><%= @assignment.title %></h1>
+  <h1 id="video-title">Assignment Title: <%= @assignment.title %></h1>
   <iframe width="560" height="315" src=<%= @assignment.parse_video %> frameborder="0" allowfullscreen></iframe>
   <h5>Description: <%= @assignment.description %></h5>
   <%= link_to 'Analyze Results By Question', '#', class: "button", id: "analytic-button-question" %>
@@ -8,7 +8,7 @@
 
 
 <div class="row" id="question-video">
-  <h3>Analyze Results By Question</h3>
+  <h3 class="aligncenter">Breakdown of Options Selected</h3>
     <% @assignment.questions.each do |question| %>
       <div class="large-7 columns">
         <div class="panel">
@@ -35,8 +35,10 @@
 </div>
 
 <div class="row" id="student-charts">
-  <h3>Total Points Scored</h3>
+  <h3 class="aligncenter">Total Points Scored Per Student</h3>
+  <div class="large-12 columns">
   <div class="panel">
     <%= bar_chart(@assignment.student_results) %>
+  </div>
   </div>
 </div>
