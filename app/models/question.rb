@@ -14,4 +14,8 @@ class Question < ActiveRecord::Base
   has_many :answers,
     inverse_of: :question,
     dependent: :destroy
+
+  def answers_per_option
+    binding.pry
+  end
 end
