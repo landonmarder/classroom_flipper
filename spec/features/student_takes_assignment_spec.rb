@@ -38,7 +38,6 @@ feature 'student takes an assignment' do
     end
 
     click_button 'Submit'
-    save_and_open_page
     expect(page).to have_content("View All Assignments")
     expect(page).to have_content("Thank you for completing your assignment!")
     expect(Submission.all.count).to eql(submission_count + 1)
