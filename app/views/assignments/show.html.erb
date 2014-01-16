@@ -7,16 +7,19 @@
     <%= link_to 'Analyze Results By Question', '#', class: "button", id: "analytic-button-pie" %>
     <%= link_to 'Analyze Results By Student', '#', class: "button", id: "analytic-button-bar" %>
   </div>
+  <div class="small-12 large-12 small-centered large-centered column question-video">
+    <h3>Questions</h3>
   <% @assignment.questions.each do |question| %>
-      <div class="small-12 large-8 small-centered large-centered column question-video">
-        <%= @question_number %>. <%= question.prompt %>
-          <% @question_number = @question_number + 1 %>
-          <% question.options.each do |option| %>
-            <div class="option-choice"><%= option.option_value %></div>
-          <% end %>
+    <div id="view-questions">
+      <%= @question_number %>. <%= question.prompt %>
+        <% @question_number = @question_number + 1 %>
+        <% question.options.each do |option| %>
+          <div class="option-choice"><%= option.option_value %></div>
+        <% end %>
+    </div>
+  <% end %>
       </div>
-    <% end %>
-  <div class="small-12 large-6 small-centered large-centered column" id="pie-charts">
+  <div class="small-12 large-12 small-centered large-centered column" id="pie-charts">
     <h3>Question Breakdown</h3>
     <% @assignment.questions.each do |question| %>
       <div>
