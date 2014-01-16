@@ -17,7 +17,7 @@ describe Question do
     option_incorrect = FactoryGirl.create(:option, question: question, option_value: 'Incorrect')
     answer_billy = FactoryGirl.create(:answer, option: option_correct, question: question)
     answer_joe = FactoryGirl.create(:answer, option: option_incorrect, question: question)
-    binding.pry
+
     expect(question.answers_per_option).to eql({ "#{option_correct.option_value}" => 1, "#{option_incorrect.option_value}" => 1 })
   end
 

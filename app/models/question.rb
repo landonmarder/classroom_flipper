@@ -16,6 +16,10 @@ class Question < ActiveRecord::Base
     dependent: :destroy
 
   def answers_per_option
-    binding.pry
+    all_answers = Hash.new(0)
+    answers.each do |answer|
+      all_answers[answer.option.option_value] += 1
+    end
+    all_answers
   end
 end
