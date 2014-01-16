@@ -2,6 +2,8 @@ class Submission < ActiveRecord::Base
   validates_presence_of :enrollment
   validates_presence_of :assignment
 
+  validates_uniqueness_of :enrollment_id, scope: :assignment_id
+
   belongs_to :enrollment,
     inverse_of: :submissions
 
