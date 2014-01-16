@@ -4,6 +4,5 @@ FactoryGirl.define do
   factory :option do
     question
     option_value "Choose C."
-
   end
 end
