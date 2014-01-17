@@ -26,8 +26,8 @@ class User < ActiveRecord::Base
   has_many :submissions,
     through: :enrollments
 
-  # has_many :enrolled_classrooms,
-  #   through: :enrollments, class_name: "Classroom", foreign_key:
+  has_many :enrolled_classrooms,
+    through: :enrollments, source: :classroom
 
   def is_teacher?
     role == 'Teacher'
@@ -45,7 +45,10 @@ class User < ActiveRecord::Base
     if is_teacher?
       classrooms
     else
-      enrollments.map { |enrollment| enrollment.classroom }
+      # Rack::MiniProfiler.step("ALL CLASSROOM") do
+      #   enrollments.map { |enrollment| enrollment.classroom }
+      # end
+      enrolled_classrooms
     end
   end
 

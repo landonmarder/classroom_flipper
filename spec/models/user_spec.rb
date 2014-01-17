@@ -68,15 +68,19 @@ describe User do
   it 'displays all the classrooms for the current student' do
     student = FactoryGirl.create(:student)
     enrollment = FactoryGirl.create(:enrollment, user: student)
+    enrollment_two = FactoryGirl.create(:enrollment)
 
-    expect(student.all_classrooms.last).to eq(enrollment.classroom)
+    expect(student.all_classrooms).to include(enrollment.classroom)
+    expect(student.all_classrooms).to_not include(enrollment_two.classroom)
   end
 
   it 'displays all the assignments for the current student' do
     assignment = FactoryGirl.create(:assignment)
+    assignment_two = FactoryGirl.create(:assignment)
     student = FactoryGirl.create(:student)
     enrollment = FactoryGirl.create(:enrollment, classroom: assignment.classroom, user: student)
 
-    expect(student.all_assignments.last).to eql(assignment)
+    expect(student.all_assignments).to     include(assignment)
+    expect(student.all_assignments).to_not include(assignment_two)
   end
 end
