@@ -29,6 +29,9 @@ class User < ActiveRecord::Base
   has_many :enrolled_classrooms,
     through: :enrollments, source: :classroom
 
+  has_many :student_assignments,
+    through: :enrolled_classrooms, source: :assignments
+
   def is_teacher?
     role == 'Teacher'
   end
@@ -45,15 +48,16 @@ class User < ActiveRecord::Base
     if is_teacher?
       classrooms
     else
-      # Rack::MiniProfiler.step("ALL CLASSROOM") do
-      #   enrollments.map { |enrollment| enrollment.classroom }
-      # end
       enrolled_classrooms
     end
   end
 
   def all_assignments
-    all_classrooms.map { |classroom| classroom.assignments }.flatten.sort_by{ |assignment| assignment.created_at }.reverse!
+    if is_teacher?
+      assignments.includes(:classroom)
+    else
+      student_assignments.includes(:classroom).order(created_at: :desc)
+    end
   end
 
   class << self
