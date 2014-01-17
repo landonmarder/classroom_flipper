@@ -1,5 +1,13 @@
 <h1 class="aligncenter">View All Assignments</h1>
 
+<%= search_form_for @search do |f| %>
+  <div class="field small-4 columns">
+    <%= f.label :title_cont, "Assignment Name:" %>
+    <%= f.text_field :title_cont %>
+  </div>
+  <div class="actions"><%= f.submit "Search"%></div>
+<% end %>
+
 <div class="assignment-table">
 <table>
   <thead>
