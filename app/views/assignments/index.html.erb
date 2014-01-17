@@ -1,17 +1,18 @@
 <h1 class="aligncenter">View All Assignments</h1>
 
+
 <%= search_form_for @search do |f| %>
   <div class="field small-3 columns">
-    <%= f.label :title_cont, "Assignment Name:" %>
-    <%= f.text_field :title_cont %>
+    <%= f.label :title_cont, "Assignment Title:" %>
+    <%= f.text_field :title_cont, placeholder: "Calculating the mean" %>
   </div>
   <div class="field small-3 columns">
     <%= f.label :created_at_gteq, "Beginning Date:" %>
-    <%= f.text_field :created_at_gteq, class: "cal"%>
+    <%= f.text_field :created_at_gteq, class: "cal", placeholder: "January, 10th, 2014"%>
   </div>
   <div class="field small-3 columns">
     <%= f.label :created_at_lteq, "End Date:" %>
-    <%= f.text_field :created_at_lteq, class: "cal" %>
+    <%= f.text_field :created_at_lteq, class: "cal", placeholder: "January, 12th, 2014" %>
   </div>
   <div class="actions"><%= f.submit "Search"%></div>
 <% end %>
