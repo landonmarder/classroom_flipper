@@ -89,7 +89,7 @@
               <% if classroom.enrolled?(current_user) %>
               Enrolled
               <% else %>
-              <%= button_to '+', enrollments_path(classroom_id: classroom.id) %>
+              <%= button_to '+', enrollments_path(classroom_id: classroom.id), class: "tiny button enroll-button" %>
               <% end %>
             </td>
           </tr>

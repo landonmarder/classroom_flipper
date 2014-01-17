@@ -9,7 +9,7 @@
     <% @students.each do |student| %>
       <tr>
         <td><%= student.full_name%></td>
-        <td><%= button_to '-', enrollment_path(user_id: student.id), method: :delete, data: { confirm: 'Are you sure you want to delete this student? This cannot be undone.' } %></td>
+        <td><%= button_to '-', enrollment_path(user_id: student.id), method: :delete, data: { confirm: 'Are you sure you want to delete this student? This cannot be undone.' }, class: "tiny button enroll-button" %></td>
       </tr>
     <% end %>
     </tbody>
