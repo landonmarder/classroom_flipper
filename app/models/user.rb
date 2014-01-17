@@ -26,6 +26,9 @@ class User < ActiveRecord::Base
   has_many :submissions,
     through: :enrollments
 
+  # has_many :enrolled_classrooms,
+  #   through: :enrollments, class_name: "Classroom", foreign_key:
+
   def is_teacher?
     role == 'Teacher'
   end
@@ -36,6 +39,18 @@ class User < ActiveRecord::Base
 
   def full_name
     "#{first_name} #{last_name}"
+  end
+
+  def all_classrooms
+    if is_teacher?
+      classrooms
+    else
+      enrollments.map { |enrollment| enrollment.classroom }
+    end
+  end
+
+  def all_assignments
+    all_classrooms.map { |classroom| classroom.assignments }.flatten.sort_by{ |assignment| assignment.created_at }.reverse!
   end
 
   class << self

@@ -64,4 +64,19 @@ describe User do
     student = FactoryGirl.create(:student)
     expect(student.full_name).to eql('Kobe Bryant')
   end
+
+  it 'displays all the classrooms for the current student' do
+    student = FactoryGirl.create(:student)
+    enrollment = FactoryGirl.create(:enrollment, user: student)
+
+    expect(student.all_classrooms.length).to eql(1)
+  end
+
+  it 'displays all the assignments for the current student' do
+    assignment = FactoryGirl.create(:assignment)
+    student = FactoryGirl.create(:student)
+    enrollment = FactoryGirl.create(:enrollment, classroom: assignment.classroom, user: student)
+
+    expect(student.all_assignments.length).to eql(1)
+  end
 end
