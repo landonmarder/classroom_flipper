@@ -18,7 +18,8 @@
 //= require foundation
 //= require_tree .
 
-$('.cal').pickadate();
+$('.cal').pickadate({
+});
 
 $(function(){
   $('#enrollment-button').on('click', function(){
