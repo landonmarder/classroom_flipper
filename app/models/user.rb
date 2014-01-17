@@ -54,7 +54,7 @@ class User < ActiveRecord::Base
 
   def all_assignments
     if is_teacher?
-      assignments.includes(:classroom)
+      assignments.includes(:classroom).order(created_at: :desc)
     else
       student_assignments.includes(:classroom).order(created_at: :desc)
     end
