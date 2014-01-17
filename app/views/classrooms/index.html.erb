@@ -1,6 +1,6 @@
 <% if current_user.is_teacher? %>
 <h1 class="aligncenter">Manage Your Classrooms</h1>
-  <p>You have <%= pluralize(@classrooms.length, "classroom")%>.</p>
+  <p class="aligncenter">You have <%= pluralize(@classrooms.length, "classroom")%>.</p>
   <table id="teacher-classroom-table">
     <thead>
       <th>Class Name</th>
