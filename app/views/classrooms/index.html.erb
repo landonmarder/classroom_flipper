@@ -1,7 +1,7 @@
 <% if current_user.is_teacher? %>
 <h1 class="aligncenter">Manage Your Classrooms</h1>
   <p>You have <%= pluralize(@classrooms.length, "classroom")%>.</p>
-  <table>
+  <table id="teacher-classroom-table">
     <thead>
       <th>Class Name</th>
       <th>Description</th>
@@ -46,7 +46,7 @@
 <% else %>
   <h1 class="aligncenter">My Classes</h1>
   <p class="aligncenter">You are enrolled in <%= pluralize(@student_enrollments.length, "classroom")%>.</p>
-  <table>
+  <table id="student-enrollment-table">
     <thead>
       <td>Name</td>
       <td>Description</td>
