@@ -13,8 +13,12 @@
 //= require jquery
 //= require jquery_ujs
 //= require cocoon
+//= require pickadate/picker
+//= require pickadate/picker.date
 //= require foundation
 //= require_tree .
+
+$('.cal').pickadate();
 
 $(function(){
   $('#enrollment-button').on('click', function(){

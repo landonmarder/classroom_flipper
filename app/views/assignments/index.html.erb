@@ -7,11 +7,11 @@
   </div>
   <div class="field small-3 columns">
     <%= f.label :created_at_gteq, "Beginning Date:" %>
-    <%= f.text_field :created_at_gteq %>
+    <%= f.text_field :created_at_gteq, class: "cal"%>
   </div>
   <div class="field small-3 columns">
     <%= f.label :created_at_lteq, "End Date:" %>
-    <%= f.text_field :created_at_lteq %>
+    <%= f.text_field :created_at_lteq, class: "cal" %>
   </div>
   <div class="actions"><%= f.submit "Search"%></div>
 <% end %>
@@ -44,3 +44,5 @@
 </div>
 
 <%= paginate @assignments %>
+
+
