@@ -1,13 +1,17 @@
 <h1 class="aligncenter">View All Assignments</h1>
 
 <%= search_form_for @search do |f| %>
-  <div class="field small-4 columns">
+  <div class="field small-3 columns">
     <%= f.label :title_cont, "Assignment Name:" %>
     <%= f.text_field :title_cont %>
   </div>
-  <div class="field small-4 columns">
+  <div class="field small-3 columns">
     <%= f.label :created_at_gteq, "Beginning Date:" %>
     <%= f.text_field :created_at_gteq %>
+  </div>
+  <div class="field small-3 columns">
+    <%= f.label :created_at_lteq, "End Date:" %>
+    <%= f.text_field :created_at_lteq %>
   </div>
   <div class="actions"><%= f.submit "Search"%></div>
 <% end %>
