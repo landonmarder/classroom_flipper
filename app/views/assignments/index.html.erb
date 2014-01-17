@@ -5,7 +5,7 @@
   <thead>
     <th><%= link_to "Assignment Title", sort: 'assignment'%></th>
     <th><%= link_to "Classroom", sort: 'classroom'%></th>
-    <th><%= link_to "Date Created", sort: 'created_at'%></th>
+    <th><%= sort_link(@search, :created_at, "Date Assigned") %></th>
     <th><%= link_to "Status", sort: 'status'%></th>
   </thead>
   <tbody>

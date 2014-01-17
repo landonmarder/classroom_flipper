@@ -20,7 +20,8 @@ class AssignmentsController < ApplicationController
   end
 
   def index
-    @assignments = current_user.all_assignments.page(params[:page]).per(10)
+    @search = current_user.all_assignments.search(params[:q])
+    @assignments = @search.result.page(params[:page]).per(10)
   end
 
   def show
