@@ -3,8 +3,8 @@
 <div class="assignment-table">
 <table>
   <thead>
-    <th><%= link_to "Assignment Title", sort: 'assignment'%></th>
-    <th><%= link_to "Classroom", sort: 'classroom'%></th>
+    <th>Assignment Title</th>
+    <th>Classroom</th>
     <th><%= sort_link(@search, :created_at, "Date Assigned") %></th>
     <th><%= link_to "Status", sort: 'status'%></th>
   </thead>
