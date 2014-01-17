@@ -1,8 +1,7 @@
 <h1 class="aligncenter">View All Assignments</h1>
 
-
 <%= search_form_for @search do |f| %>
-  <div class="field small-3 columns">
+  <div class="field small-3 large-offset-1 columns">
     <%= f.label :title_cont, "Assignment Title:" %>
     <%= f.text_field :title_cont, placeholder: "Calculating the mean" %>
   </div>
