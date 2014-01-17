@@ -29,7 +29,7 @@ $(function(){
 
 $(function(){
   $('#classroom-button').on('click', function(){
-  $("#create-classroom").toggle("slow");
+  $("#create-classroom").toggle();
   });
 });
 
