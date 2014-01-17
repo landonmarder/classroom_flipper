@@ -20,7 +20,7 @@ class AssignmentsController < ApplicationController
   end
 
   def index
-    @assignments = current_user.all_assignments.page(params[:page]).per(8)
+    @assignments = current_user.all_assignments.page(params[:page]).per(10)
   end
 
   def show
