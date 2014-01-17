@@ -5,6 +5,10 @@
     <%= f.label :title_cont, "Assignment Name:" %>
     <%= f.text_field :title_cont %>
   </div>
+  <div class="field small-4 columns">
+    <%= f.label :created_at_gteq, "Beginning Date:" %>
+    <%= f.text_field :created_at_gteq %>
+  </div>
   <div class="actions"><%= f.submit "Search"%></div>
 <% end %>
 
