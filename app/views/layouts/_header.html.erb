@@ -11,10 +11,10 @@
     <ul class="right">
       <% if user_signed_in? %>
         <% if current_user.is_teacher? %>
-          <li><a href="#" data-dropdown="drop1">My Assignments</a>
+          <li><a href="#" data-dropdown="drop1">Assignment Dashboard</a>
             <ul id="drop1" class="f-dropdown" data-dropdown-content>
               <li class="set-up-options"><%= link_to 'Create Assignment', new_assignment_path %></li>
-              <li class="set-up-options"><%= link_to 'View Assignments', assignments_path %></li>
+              <li class="set-up-options"><%= link_to 'Assignment Analytics', assignments_path %></li>
             </ul>
           </li>
         <% else %>
