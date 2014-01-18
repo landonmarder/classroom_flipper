@@ -22,7 +22,6 @@ feature 'teacher views class roster' do
     click_link 'More Info'
 
     expect(page).to have_content(student.full_name)
-    expect(page).to have_content('Back to Classrooms')
   end
 
   scenario 'teacher goes back to classrooms index page after viewing a classroom' do
@@ -30,7 +29,7 @@ feature 'teacher views class roster' do
     visit classrooms_path
 
     click_link 'More Info'
-    click_link 'Back to Classrooms'
+    click_link 'Back to Classroom Dashboard'
     expect(page).to have_content('Manage Your Classrooms')
   end
 
