@@ -1,20 +1,22 @@
 <h1 class="aligncenter">View All Assignments</h1>
 
-<%= search_form_for @search do |f| %>
-  <div class="field small-3 large-offset-1 columns">
-    <%= f.label :title_cont, "Assignment Title:" %>
-    <%= f.text_field :title_cont, placeholder: "Calculating the mean" %>
-  </div>
-  <div class="field small-3 columns">
-    <%= f.label :created_at_gteq, "Beginning Date:" %>
-    <%= f.text_field :created_at_gteq, class: "cal", placeholder: "January, 10th, 2014"%>
-  </div>
-  <div class="field small-3 columns">
-    <%= f.label :created_at_lteq, "End Date:" %>
-    <%= f.text_field :created_at_lteq, class: "cal", placeholder: "January, 12th, 2014" %>
-  </div>
-  <div class="actions"><%= f.submit "Search", class: "button search-button"%></div>
-<% end %>
+<div class="assignment_search large-11 large-centered column">
+  <%= search_form_for @search do |f| %>
+    <div class="field small-3 large-offset-1 columns">
+      <%= f.label :title_cont, "Assignment Title:" %>
+      <%= f.text_field :title_cont, placeholder: "Ex. Calculate the mean" %>
+    </div>
+    <div class="field small-3 columns">
+      <%= f.label :created_at_gteq, "Beginning Date:" %>
+      <%= f.text_field :created_at_gteq, class: "cal", placeholder: "January, 10th, 2014"%>
+    </div>
+    <div class="field small-3 columns">
+      <%= f.label :created_at_lteq, "End Date:" %>
+      <%= f.text_field :created_at_lteq, class: "cal", placeholder: "January, 12th, 2014" %>
+    </div>
+    <div class="actions"><%= f.submit "Search", class: "button search-button"%></div>
+  <% end %>
+</div>
 
 <div class="assignment-table">
 <table id="assignment-table-table">
