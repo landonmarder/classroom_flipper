@@ -1,35 +1,35 @@
  <div class="row" id="classroom-show">
-  <div class="large-8 columns">
+   <div class="large-8 columns">
+    <table id="classroom-show" class="classroom-table">
+        <thead>
+          <td>Name</td>
+          <td class="aligncenter">Remove Student</td>
+        </thead>
+        <tbody>
+        <% @students.each do |student| %>
+          <tr>
+            <td><%= student.full_name%></td>
+            <td class="aligncenter"><%= button_to '-', enrollment_path(user_id: student.id), method: :delete, data: { confirm: 'Are you sure you want to delete this student? This cannot be undone.' }, class: "tiny button enroll-button" %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+  <div class="large-4 columns">
     <div class="panel">
       <h1><%= @classroom.name %></h1>
       <p>Description: <%= @classroom.description %></p>
-      <%= link_to 'Back to Classrooms', classrooms_path, class: "small button" %>
-    </div>
-  </div>
-  <div class="large-4 columns">
-    <div class="panel" id="at-a-glance">
+
       <h4>At A Glance:</h4>
-      <li>Number of Assignments: <%= @classroom.assignments.count %></li>
-      <li>Number of Students: <%= @classroom.enrollments.count %></li>
+        <li>Number of Assignments: <%= @classroom.assignments.count %></li>
+        <li>Number of Students: <%= @classroom.enrollments.count %></li>
+      <%= link_to 'Back to Classrooms', classrooms_path, class: "small button" %>
     </div>
   </div>
 </div>
 
 <div class="row">
   <div class="large-8 large-centered column">
-    <table id="classroom-show">
-      <thead>
-        <td>Name</td>
-        <td class="aligncenter">Remove Student</td>
-      </thead>
-      <tbody>
-      <% @students.each do |student| %>
-        <tr>
-          <td><%= student.full_name%></td>
-          <td class="aligncenter"><%= button_to '-', enrollment_path(user_id: student.id), method: :delete, data: { confirm: 'Are you sure you want to delete this student? This cannot be undone.' }, class: "tiny button enroll-button" %></td>
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
+
   </div>
 </div>
