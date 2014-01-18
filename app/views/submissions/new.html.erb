@@ -1,17 +1,17 @@
+<div class="small-12 large-8 large-centered column">
 <%= simple_form_for([@assignment, @submission]) do |f| %>
-  <section class="row">
-    <div class="small-12 large-8 small-centered large-centered column aligncenter">
+    <div class="aligncenter" id="assignment_video">
       <h1 id="video-title"><%= @assignment.title %></h1>
       <iframe width="560" height="315" src=<%= @assignment.parse_video %> frameborder="0" allowfullscreen></iframe>
       <h5>Description: <%= @assignment.description %></h5>
     </div>
     <%= f.simple_fields_for :answers do |a| %>
-      <div class="small-12 large-8 small-centered large-centered column question-submission">
+      <div class="question-submission">
         <%= a.index + 1 %>. <%= a.object.question.prompt %>
         <%= a.input :option_id, collection: a.object.choices, label_method: :option_value, value_method: :id, label: false, include_blank: true %>
         <%= a.hidden_field :question_id, value: a.object.question.id %>
       </div>
     <% end %>
-  </section>
-  <%= f.button :submit, 'Submit' %>
+  <%= f.button :submit, 'Submit', id:"assignment-submit-button" %>
 <% end %>
+</div>
