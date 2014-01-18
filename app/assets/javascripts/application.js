@@ -15,7 +15,6 @@
 //= require cocoon
 //= require pickadate/picker
 //= require pickadate/picker.date
-//= require modernizr
 //= require foundation
 //= require_tree .
 
