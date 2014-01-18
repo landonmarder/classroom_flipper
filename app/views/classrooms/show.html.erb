@@ -3,19 +3,19 @@
     <div class="panel">
       <h1><%= @classroom.name %></h1>
       <p>Description: <%= @classroom.description %></p>
-      <%= link_to 'Back to Classrooms', classrooms_path %>
+      <%= link_to 'Back to Classrooms', classrooms_path, class: "small button" %>
     </div>
   </div>
   <div class="large-4 columns">
-    <div class="panel">
-      <h5>At A Glance:</h5>
+    <div class="panel" id="at-a-glance">
+      <h4>At A Glance:</h4>
       <li>Number of Assignments: <%= @classroom.assignments.count %></li>
       <li>Number of Students: <%= @classroom.enrollments.count %></li>
     </div>
   </div>
 </div>
 
-<div class="row" id="classroom-show">
+<div class="row">
   <div class="large-8 large-centered column">
     <table id="classroom-show">
       <thead>
