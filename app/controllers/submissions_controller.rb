@@ -1,4 +1,6 @@
 class SubmissionsController < ApplicationController
+  before_action :authorize_user
+
   def new
     @assignment = Assignment.find(params[:assignment_id])
     @submission = @assignment.submissions.new
@@ -30,4 +32,10 @@ class SubmissionsController < ApplicationController
       params.require(:submission).permit(answers_attributes:
                                 [:submission_id, :option_id, :question_id])
     end
+
+  def authorize_user
+    unless user_signed_in?
+      access_denied("Access Denied. Please sign up.")
+    end
+  end
 end
