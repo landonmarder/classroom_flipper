@@ -1,28 +1,23 @@
-== README
+== Classroom Flipper
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Classroom Flipper is a quiz making and quiz taking app to help teachers flip their classrooms by assigning videos accompanied by short quizzes to students and providing teachers with analytics using Ruby, Rails, jQuery, HTML, CSS.
 
-Things you may want to cover:
+Created by Landon Marder at Launch Academy using outside in TDD, agile development.
 
-* Ruby version
+http://classroom-flipper.herokuapp.com/
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+== Demo Accounts
 
 
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+View as a Teacher:
+
+* Email: mr_feeny@example.com
+
+* Password: password
+
+
+View as a Student:
+
+* Email: cory_matthews@example.com
+
+* Password: password
