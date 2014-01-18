@@ -18,12 +18,13 @@
   <div class="large-4 columns">
     <div class="panel">
       <h1><%= @classroom.name %></h1>
-      <p>Description: <%= @classroom.description %></p>
 
       <h4>At A Glance:</h4>
+        <li><p>Description: <%= @classroom.description %></p></li>
         <li>Number of Assignments: <%= @classroom.assignments.count %></li>
         <li>Number of Students: <%= @classroom.enrollments.count %></li>
-      <%= link_to 'Back to Classrooms', classrooms_path, class: "small button" %>
+        <br>
+      <%= link_to 'Back to Classroom Dashboard', classrooms_path, class: "small button aligncenter" %>
     </div>
   </div>
 </div>
