@@ -15,7 +15,7 @@ feature 'teacher creates a classroom' do
 
   scenario 'teacher fills out creating the classroom form properly' do
     sign_in_as(teacher)
-    click_link 'Manage Classrooms'
+    click_link 'Classroom Dashboard'
     expect(page).to have_content 'Manage Your Classrooms'
 
     click_link 'Add a Classroom'
@@ -30,7 +30,7 @@ feature 'teacher creates a classroom' do
 
   scenario 'teacher does not fill out creating the classroom for properly' do
     sign_in_as(teacher)
-    click_link 'Manage Classrooms'
+    click_link 'Classroom Dashboard'
     expect(page).to have_content 'Manage Your Classrooms'
 
     click_link 'Add a Classroom'
@@ -43,7 +43,7 @@ feature 'teacher creates a classroom' do
 
   scenario 'a student does not see option to create a classroom' do
     sign_in_as(student)
-    click_link 'Manage Classroom'
+    click_link 'Classroom Dashboard'
     expect(page).to_not have_content('Create Classroom')
   end
 

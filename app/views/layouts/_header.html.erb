@@ -20,7 +20,7 @@
         <% else %>
           <li class="set-up-options"><%= link_to 'My Assignments', assignments_path %></li>
         <% end %>
-        <li class="set-up-options"><%= link_to 'Manage Classrooms', classrooms_path %></li>
+        <li class="set-up-options"><%= link_to 'Classroom Dashboard', classrooms_path %></li>
         <li class="set-up-options"><%= link_to 'Edit Profile', edit_user_registration_path %></li>
         <li><%= link_to 'Sign Out', destroy_user_session_path, method: :delete %></li>
       <% else %>

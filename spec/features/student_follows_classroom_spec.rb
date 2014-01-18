@@ -16,7 +16,7 @@ feature 'student follows a classroom' do
     FactoryGirl.create(:classroom, name: 'Math', user_id: teacher.id)
 
     sign_in_as(student)
-    click_link "Manage Classrooms"
+    click_link 'Classroom Dashboard'
 
     expect(page).to have_content('Biology')
     expect(page).to have_content('Math')
@@ -30,7 +30,6 @@ feature 'student follows a classroom' do
 
     click_button '+'
     expect(page).to have_content('Thank you for enrolling!')
-    expect(page).to have_content('Manage Classrooms')
   end
 
   scenario 'student cannot enroll in a class that they are already enrolled in' do
@@ -38,7 +37,7 @@ feature 'student follows a classroom' do
     FactoryGirl.create(:enrollment, classroom_id: classroom.id, user_id: student.id)
 
     sign_in_as(student)
-    click_link "Manage Classrooms"
+    click_link 'Classroom Dashboard'
 
     expect(page).to have_content('Biology')
     expect(page).to have_content(teacher.professional_name)
@@ -52,7 +51,7 @@ feature 'student follows a classroom' do
 
   scenario 'teacher does not have access to follow a classroom' do
     sign_in_as(teacher)
-    click_link 'Manage Classrooms'
+    click_link 'Classroom Dashboard'
     expect(page).to_not have_content('Classroom Name')
   end
 
