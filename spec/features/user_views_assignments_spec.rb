@@ -22,7 +22,7 @@ feature 'user views his or her assignments' do
 
   scenario 'teacher views assignments that they created' do
     sign_in_as(teacher_good)
-    click_link 'View Assignments'
+    click_link 'Assignment Analytics'
 
     expect(page).to have_content(assignment_good.title)
     expect(page).to have_content(assignment_good.classroom.name)
@@ -38,7 +38,7 @@ feature 'user views his or her assignments' do
   scenario 'teacher does not see assignments from another teacher' do
     another_teacher = FactoryGirl.create(:teacher)
     sign_in_as(another_teacher)
-    click_link 'View Assignments'
+    click_link 'Assignment Analytics'
 
     expect(page).to_not have_content(assignment_good.title)
     expect(page).to_not have_content(assignment_good.classroom.name)
