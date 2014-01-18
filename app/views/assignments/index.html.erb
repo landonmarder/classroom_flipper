@@ -22,7 +22,6 @@
     <th>Assignment Title</th>
     <th>Classroom</th>
     <th><%= sort_link(@search, :created_at, "Date Assigned") %></th>
-    <th><%= link_to "Status", sort: 'status'%></th>
   </thead>
   <tbody>
     <% @assignments.each do |assignment| %>
@@ -36,7 +35,6 @@
       </td>
       <td><%= assignment.classroom.name%></td>
       <td><%=assignment.created_at.strftime('%a. %B %d')%></td>
-      <td><%=assignment.status%></td>
     </tr>
     <% end %>
   </tbody>
