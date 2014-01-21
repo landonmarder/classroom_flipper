@@ -17,6 +17,7 @@
 //= require pickadate/picker.date
 //= require foundation
 //= require_tree .
+//= require modernizr
 
 $(window).bind("load", function () {
     var footer = $("#sticky-footer");
