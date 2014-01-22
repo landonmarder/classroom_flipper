@@ -4,7 +4,9 @@ Classroom Flipper is a quiz making and quiz taking app to help teachers flip the
 
 Created by Landon Marder at Launch Academy using outside in TDD, agile development.
 
-http://classroom-flipper.herokuapp.com
+Check it out: http://classroom-flipper.herokuapp.com
+
+Watch the Walkthrough: https://www.youtube.com/watch?v=HuzB7WpOtPY
 
 == Demo Accounts
 
