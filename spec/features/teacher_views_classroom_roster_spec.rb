@@ -33,9 +33,10 @@ feature 'teacher views class roster' do
     expect(page).to have_content('Manage Your Classrooms')
   end
 
-  scenario 'what does the student do?' do
+  scenario 'student cannot manage a classroom' do
     sign_in_as(student)
     visit classrooms_path
-    expect(page).to_not have_content('More Info')
+
+    expect(page).to_not have_content('Manage Your Classrooms')
   end
 end
